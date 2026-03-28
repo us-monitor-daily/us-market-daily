@@ -72,7 +72,7 @@
     <div class="container">
         <header>
             <h1>US Market Intelligence</h1>
-            <div class="date">2026-03-28 04:56 KST Update</div>
+            <div class="date">2026-03-28 05:00 KST Update</div>
         </header>
 
         <h2 class="section-header">거시 경제 전략 및 인사이트</h2>
@@ -108,38 +108,14 @@
         <div class="safe-scroll-zone"></div>
         
         <h2 class="section-header">글로벌 3대 지수 흐름</h2>
-        <p class="section-desc">S&P 500, Nasdaq 100, Dow Jones 산업평균지수의 실시간 종합 흐름 추적입니다.</p>
-        <div class="widget-box" style="height: 400px;">
-            <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
-              <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-              {
-              "symbols": [ ["S&P 500", "OANDA:SPX500USD|1D"], ["Nasdaq 100", "OANDA:NAS100USD|1D"], ["Dow Jones", "OANDA:US30USD|1D"] ],
-              "chartOnly": false,
-              "width": "100%",
-              "height": "100%",
-              "locale": "en",
-              "colorTheme": "dark",
-              "autosize": true,
-              "showVolume": false,
-              "showMA": false,
-              "hideDateRanges": false,
-              "hideMarketStatus": false,
-              "hideSymbolLogo": false,
-              "scalePosition": "right",
-              "scaleMode": "Normal",
-              "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-              "fontSize": "10",
-              "noTimeScale": false,
-              "valuesTracking": "1",
-              "changeMode": "price-and-percent",
-              "chartType": "area",
-              "lineWidth": 2,
-              "lineType": 0,
-              "dateRanges": [ "1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M" ]
-              }
-              </script>
+        <p class="section-desc">S&P 500, Nasdaq 100, Dow Jones 산업평균지수의 실시간 진성(Genuine) 지수 흐름 추적입니다.</p>
+        <div class="widget-box" style="height: 480px; display: flex; flex-direction: column;">
+            <div class="index-tabs" style="display: flex; background: #000; border-bottom: 1px solid var(--border-color);">
+                <div class="index-tab active" onclick="loadMainChart('SP:SPX', this)" style="padding: 16px 24px; cursor: pointer; color: #fff; font-weight: 600; font-size: 0.95rem; border-right: 1px solid var(--border-color); border-bottom: 2px solid var(--accent-pos);">S&P 500</div>
+                <div class="index-tab" onclick="loadMainChart('NASDAQ:NDX', this)" style="padding: 16px 24px; cursor: pointer; color: var(--text-mute); font-weight: 500; font-size: 0.95rem; border-right: 1px solid var(--border-color); border-bottom: 2px solid transparent;">Nasdaq 100</div>
+                <div class="index-tab" onclick="loadMainChart('DJ:DJI', this)" style="padding: 16px 24px; cursor: pointer; color: var(--text-mute); font-weight: 500; font-size: 0.95rem; border-bottom: 2px solid transparent;">Dow Jones</div>
             </div>
+            <div id="main_index_chart" style="flex: 1; width: 100%; background: #000;"></div>
         </div>
         <div class="safe-scroll-zone"></div>
 
@@ -176,7 +152,7 @@
                 금융 <span class="count">(8)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.14% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.08% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
             <div class="stock-item neg" onclick="toggleStock(event, this, 'BRK.B', 'NYSE:BRK.B')">
                 <div class="stock-header">
                     <span class="ticker">BRK.B</span>
@@ -237,116 +213,26 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PD', 'NYSE:JPM/PD')">
                 <div class="stock-header">
-                    <span class="ticker">JPM/PC</span>
+                    <span class="ticker">JPM/PD</span>
                     <span class="details">
-                        <span class="price">$24.86</span>
-                        <span class="change">-0.28%</span>
+                        <span class="price">$24.32</span>
+                        <span class="change">-0.53%</span>
                     </span>
                 </div>
-                <div class="stock-summary" id="summary-JPM/PC">
+                <div class="stock-summary" id="summary-JPM/PD">
                     <div class="summary-content">
                         <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.28% 약세 조정</b>를 기록하며 <b>$24.86</b>에 장을 마감했습니다.<br><br>
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.53% 약세 조정</b>를 기록하며 <b>$24.32</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.28%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.53%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
                                 <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PK', 'NYSE:JPM/PK')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PK</span>
-                    <span class="details">
-                        <span class="price">$18.72</span>
-                        <span class="change">-0.69%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PK">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.69% 약세 조정</b>를 기록하며 <b>$18.72</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.69%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PK" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM', 'NYSE:JPM')">
-                <div class="stock-header">
-                    <span class="ticker">JPM</span>
-                    <span class="details">
-                        <span class="price">$282.84</span>
-                        <span class="change">-3.02%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>JP Morgan Chase & Co. (JPM)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-3.02% 약세 조정</b>를 기록하며 <b>$282.84</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 3.02%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/standard-chartered-lse-stan-story-001529188.html?.tsrc=rss" target="_blank">How The Standard Chartered (LSE:STAN) Story Is Shifting As Analyst Targets Converge</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/regulatory-shifts-tech-ambitions-jpmorgan-230609475.html?.tsrc=rss" target="_blank">How Regulatory Shifts and Tech Ambitions At JPMorgan Chase (JPM) Have Changed Its Investment Story</a></li><li class="news-item"><a href="https://finance.yahoo.com/news/dollar-best-month-since-july-235930427.html?.tsrc=rss" target="_blank">Wall Street’s FX Roadmap Roiled by Dollar’s Best Run Since 2024</a></li></ul></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PJ', 'NYSE:JPM/PJ')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PJ</span>
-                    <span class="details">
-                        <span class="price">$19.58</span>
-                        <span class="change">-0.61%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PJ">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.61% 약세 조정</b>를 기록하며 <b>$19.58</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.61%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PJ" class="mini-chart"></div>
+                                <div id="tvchart_JPM/PD" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
@@ -387,30 +273,120 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PL', 'NYSE:JPM/PL')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PJ', 'NYSE:JPM/PJ')">
                 <div class="stock-header">
-                    <span class="ticker">JPM/PL</span>
+                    <span class="ticker">JPM/PJ</span>
                     <span class="details">
-                        <span class="price">$19.03</span>
-                        <span class="change">-0.99%</span>
+                        <span class="price">$19.58</span>
+                        <span class="change">-0.61%</span>
                     </span>
                 </div>
-                <div class="stock-summary" id="summary-JPM/PL">
+                <div class="stock-summary" id="summary-JPM/PJ">
                     <div class="summary-content">
                         <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.99% 약세 조정</b>를 기록하며 <b>$19.03</b>에 장을 마감했습니다.<br><br>
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.61% 약세 조정</b>를 기록하며 <b>$19.58</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.99%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.61%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
                                 <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PL" class="mini-chart"></div>
+                                <div id="tvchart_JPM/PJ" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
                                 <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PK', 'NYSE:JPM/PK')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PK</span>
+                    <span class="details">
+                        <span class="price">$18.72</span>
+                        <span class="change">-0.69%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PK">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.69% 약세 조정</b>를 기록하며 <b>$18.72</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.69%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PK" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PC</span>
+                    <span class="details">
+                        <span class="price">$24.86</span>
+                        <span class="change">-0.28%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PC">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.28% 약세 조정</b>를 기록하며 <b>$24.86</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.28%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM', 'NYSE:JPM')">
+                <div class="stock-header">
+                    <span class="ticker">JPM</span>
+                    <span class="details">
+                        <span class="price">$282.84</span>
+                        <span class="change">-3.02%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>JP Morgan Chase & Co. (JPM)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-3.02% 약세 조정</b>를 기록하며 <b>$282.84</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 3.02%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/standard-chartered-lse-stan-story-001529188.html?.tsrc=rss" target="_blank">How The Standard Chartered (LSE:STAN) Story Is Shifting As Analyst Targets Converge</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/regulatory-shifts-tech-ambitions-jpmorgan-230609475.html?.tsrc=rss" target="_blank">How Regulatory Shifts and Tech Ambitions At JPMorgan Chase (JPM) Have Changed Its Investment Story</a></li><li class="news-item"><a href="https://finance.yahoo.com/news/dollar-best-month-since-july-235930427.html?.tsrc=rss" target="_blank">Wall Street’s FX Roadmap Roiled by Dollar’s Best Run Since 2024</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -829,6 +805,43 @@
     </div>
     
     <script>
+        function loadMainChart(symbolStr, element) {
+            if (element) {
+                document.querySelectorAll('.index-tab').forEach(el => {
+                    el.style.color = 'var(--text-mute)';
+                    el.style.fontWeight = '500';
+                    el.style.borderBottom = '2px solid transparent';
+                });
+                element.style.color = '#fff';
+                element.style.fontWeight = '600';
+                element.style.borderBottom = '2px solid var(--accent-pos)';
+            }
+            
+            if (typeof TradingView !== 'undefined') {
+                document.getElementById('main_index_chart').innerHTML = '';
+                new TradingView.widget({
+                    "autosize": true,
+                    "symbol": symbolStr,
+                    "interval": "D",
+                    "timezone": "America/New_York",
+                    "theme": "dark",
+                    "style": "3",
+                    "locale": "en",
+                    "enable_publishing": false,
+                    "backgroundColor": "rgba(0,0,0,0)",
+                    "gridColor": "rgba(255, 255, 255, 0.03)",
+                    "hide_top_toolbar": true,
+                    "hide_legend": false,
+                    "save_image": false,
+                    "container_id": "main_index_chart"
+                });
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadMainChart('SP:SPX', document.querySelector('.index-tab.active'));
+        });
+
         function toggleSector(element) {
             const content = element.nextElementSibling;
             content.style.display = content.style.display === "none" ? "block" : "none";
