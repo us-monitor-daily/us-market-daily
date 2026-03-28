@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>미국 시가총액 Top 20</title>
+    <title>Wall Street Market Intelligence</title>
     <!-- TradingView Design System Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #131722;
@@ -15,7 +15,6 @@
             --text-mute: #787b86;
             --text-accent: #2962ff;
             --border-color: #2a2e39;
-            /* 한국인 기준: 상승 빨강, 하락 파랑 */
             --accent-pos: #ff4b4b; 
             --accent-neg: #3b82f6; 
         }
@@ -25,56 +24,59 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding: 20px 15px;
-            line-height: 1.5;
+            padding: 25px 20px;
+            line-height: 1.6;
         }
         
-        .container { max-width: 600px; margin: 0 auto; }
+        .container { max-width: 640px; margin: 0 auto; }
         
-        header { margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; text-align: center; }
-        h1 { font-size: 1.6rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-        .date { font-size: 0.85rem; color: var(--text-mute); margin-top: 5px; }
+        header { margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; text-align: left; }
+        h1 { font-size: 1.8rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+        .date { font-size: 0.9rem; color: var(--text-mute); margin-top: 6px; }
         
         /* Market Overview Box */
         .summary-section {
             background: linear-gradient(180deg, rgba(30, 34, 45, 1) 0%, rgba(19, 23, 34, 0.4) 100%);
-            border-radius: 8px; padding: 20px; margin-bottom: 25px;
+            border-radius: 10px; padding: 24px; margin-bottom: 30px;
             border: 1px solid var(--border-color);
             border-left: 4px solid var(--text-accent);
         }
-        .summary-section h2 { font-size: 1.05rem; color: #fff; margin-bottom: 10px; font-weight: 600; }
+        .summary-section h2 { font-size: 1.1rem; color: #fff; margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
         .overview-text { font-size: 0.95rem; color: var(--text-main); line-height: 1.6; word-break: keep-all; }
         
         /* S&P 500 Chart Section */
         .chart-header {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .chart-container {
-            margin-bottom: 30px;
-            height: 280px;
+            margin-bottom: 35px;
+            height: 350px; /* Increased height for toolbar */
             width: 100%;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid var(--border-color);
+            background-color: var(--surface-color);
         }
         
         /* Sector Accodion */
-        .sectors-container { margin-top: 10px; }
+        .sectors-container { margin-top: 20px; }
         .sector-group {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 12px;
+            border-radius: 10px;
+            margin-bottom: 16px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .sector-header {
-            padding: 18px 20px;
-            font-size: 1.0rem;
+            padding: 18px 24px;
+            font-size: 1.05rem;
             font-weight: 600;
             color: #fff;
             cursor: pointer;
@@ -85,12 +87,12 @@
         }
         
         .sector-header:hover { background: rgba(255,255,255,0.03); }
-        .sector-header .count { font-size: 0.85rem; color: var(--text-mute); font-weight: 400; }
+        .sector-header .count { font-size: 0.9rem; color: var(--text-mute); font-weight: 400; }
         
         .sector-content { border-top: 1px solid var(--border-color); }
         
         .stock-item {
-            padding: 16px 20px;
+            padding: 18px 24px;
             border-bottom: 1px solid var(--border-color);
             cursor: pointer;
             transition: background 0.2s;
@@ -99,10 +101,10 @@
         .stock-item:hover { background: rgba(255,255,255,0.02); }
         
         .stock-header { display: flex; justify-content: space-between; align-items: center; }
-        .ticker { font-weight: 700; color: #fff; font-size: 1.05rem; width: 80px; }
-        .details { display: flex; align-items: center; gap: 15px; }
-        .price { font-size: 0.95rem; color: var(--text-main); font-weight: 500; }
-        .change { font-weight: 600; font-size: 0.95rem; text-align: right; width: 70px; }
+        .ticker { font-weight: 700; color: #fff; font-size: 1.1rem; width: 90px; }
+        .details { display: flex; align-items: center; gap: 20px; }
+        .price { font-size: 1.0rem; color: var(--text-main); font-weight: 500; }
+        .change { font-weight: 600; font-size: 1.0rem; text-align: right; width: 80px; padding: 4px 0; border-radius: 4px; }
         
         .pos .change { color: var(--accent-pos); }
         .neg .change { color: var(--accent-neg); }
@@ -111,28 +113,29 @@
         .stock-summary {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.4s ease-in-out;
         }
         
-        .expanded .stock-summary { max-height: 400px; } /* enough for text and chart */
+        .expanded .stock-summary { max-height: 600px; } /* enough space for toolbar chart */
         
         .summary-content {
-            margin-top: 15px;
-            padding: 16px;
+            margin-top: 20px;
+            padding: 20px;
             background: rgba(0,0,0,0.15);
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #b2b5be;
             border-left: 2px solid var(--border-color);
         }
         
         .mini-chart {
-            height: 200px;
+            height: 300px; /* Increased for toolbar */
             width: 100%;
-            margin-top: 15px;
-            border-radius: 6px;
+            margin-top: 20px;
+            border-radius: 8px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
+            background-color: var(--surface-color);
         }
         
         .open .count { transform: rotate(180deg); display: inline-block; transition: transform 0.3s; }
@@ -141,13 +144,13 @@
 <body>
     <div class="container">
         <header>
-            <h1>미국 시가총액 Top 20</h1>
-            <div class="date">2026-03-28 02:32 KST 업데이트</div>
+            <h1>Wall Street Market Intelligence</h1>
+            <div class="date">2026-03-28 03:13 KST Update</div>
         </header>
 
         
     <div class="summary-section">
-        <h2>오늘의 증시 브리핑</h2>
+        <h2>Daily Market Briefing</h2>
         <p class="overview-text">
             금일 시가총액 상위 20개 종목 중 상승은 2종목, 하락은 18종목으로 집계되었습니다. 
             대형 기술주를 중심으로 강한 매도세가 출회되며 지수 전반의 하방 압력이 가중되었습니다.
@@ -155,7 +158,7 @@
     </div>
     
         
-        <h2 class="chart-header">S&P 500 시장 실시간 흐름</h2>
+        <h2 class="chart-header">S&P 500 Index Overview</h2>
         <div class="chart-container">
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
                 <div id="tv_chart_spx" style="height: calc(100% - 32px); width: 100%;"></div>
@@ -165,16 +168,16 @@
                 new TradingView.widget({
                     "autosize": true,
                     "symbol": "SP:SPX",
-                    "interval": "5",
+                    "interval": "D",
                     "timezone": "America/New_York",
                     "theme": "dark",
-                    "style": "2",
+                    "style": "1", /* 1 = Candlesticks for professional neat look */
                     "locale": "kr",
                     "enable_publishing": false,
                     "backgroundColor": "#1e222d",
                     "gridColor": "rgba(255, 255, 255, 0.05)",
-                    "hide_top_toolbar": true,
-                    "hide_legend": true,
+                    "hide_top_toolbar": false, /* Show the 1D, 1M, 3M toolbars! */
+                    "hide_legend": false, /* Show legend for better data context */
                     "save_image": false,
                     "container_id": "tv_chart_spx"
                 });
@@ -200,7 +203,7 @@
                 </div>
                 <div class="stock-summary" id="summary-BRK.B">
                     <div class="summary-content">
-                        <p>Berkshire Hathaway Inc. New (BRK.B)는 속한 금융 섹터의 흐름 속에서 전일 대비 -1.43% 하락한 $468.49에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Berkshire Hathaway Inc. New (BRK.B)는 글로벌 금융 섹터의 흐름 속에서 기일 대비 -1.43% 하락한 $468.49에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_BRK.B" class="mini-chart"></div>
                     </div>
                 </div>
@@ -216,56 +219,8 @@
                 </div>
                 <div class="stock-summary" id="summary-BRK.A">
                     <div class="summary-content">
-                        <p>Berkshire Hathaway Inc. (BRK.A)는 속한 금융 섹터의 흐름 속에서 전일 대비 -1.24% 하락한 $703,699.99에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Berkshire Hathaway Inc. (BRK.A)는 글로벌 금융 섹터의 흐름 속에서 기일 대비 -1.24% 하락한 $703,699.99에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_BRK.A" class="mini-chart"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM', 'NYSE:JPM')">
-                <div class="stock-header">
-                    <span class="ticker">JPM</span>
-                    <span class="details">
-                        <span class="price">$282.84</span>
-                        <span class="change">-3.02%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM">
-                    <div class="summary-content">
-                        <p>JP Morgan Chase & Co. (JPM)는 속한 금융 섹터의 흐름 속에서 전일 대비 -3.02% 하락한 $282.84에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
-                        <div id="tvchart_JPM" class="mini-chart"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PK', 'NYSE:JPM/PK')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PK</span>
-                    <span class="details">
-                        <span class="price">$18.72</span>
-                        <span class="change">-0.69%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PK">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)는 속한 금융 섹터의 흐름 속에서 전일 대비 -0.69% 하락한 $18.72에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
-                        <div id="tvchart_JPM/PK" class="mini-chart"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PC', 'NYSE:JPM/PC')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PC</span>
-                    <span class="details">
-                        <span class="price">$24.86</span>
-                        <span class="change">-0.28%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PC">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)는 속한 금융 섹터의 흐름 속에서 전일 대비 -0.28% 하락한 $24.86에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
-                        <div id="tvchart_JPM/PC" class="mini-chart"></div>
                     </div>
                 </div>
             </div>
@@ -280,24 +235,8 @@
                 </div>
                 <div class="stock-summary" id="summary-JPM/PM">
                     <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)는 속한 금융 섹터의 흐름 속에서 전일 대비 -0.85% 하락한 $17.51에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)는 글로벌 금융 섹터의 흐름 속에서 기일 대비 -0.85% 하락한 $17.51에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_JPM/PM" class="mini-chart"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PL', 'NYSE:JPM/PL')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PL</span>
-                    <span class="details">
-                        <span class="price">$19.03</span>
-                        <span class="change">-0.99%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PL">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)는 속한 금융 섹터의 흐름 속에서 전일 대비 -0.99% 하락한 $19.03에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
-                        <div id="tvchart_JPM/PL" class="mini-chart"></div>
                     </div>
                 </div>
             </div>
@@ -312,8 +251,72 @@
                 </div>
                 <div class="stock-summary" id="summary-JPM/PD">
                     <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)는 속한 금융 섹터의 흐름 속에서 전일 대비 -0.53% 하락한 $24.32에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)는 글로벌 금융 섹터의 흐름 속에서 기일 대비 -0.53% 하락한 $24.32에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_JPM/PD" class="mini-chart"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PL', 'NYSE:JPM/PL')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PL</span>
+                    <span class="details">
+                        <span class="price">$19.03</span>
+                        <span class="change">-0.99%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PL">
+                    <div class="summary-content">
+                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)는 글로벌 금융 섹터의 흐름 속에서 기일 대비 -0.99% 하락한 $19.03에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <div id="tvchart_JPM/PL" class="mini-chart"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PJ', 'NYSE:JPM/PJ')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PJ</span>
+                    <span class="details">
+                        <span class="price">$19.58</span>
+                        <span class="change">-0.61%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PJ">
+                    <div class="summary-content">
+                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)는 글로벌 금융 섹터의 흐름 속에서 기일 대비 -0.61% 하락한 $19.58에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <div id="tvchart_JPM/PJ" class="mini-chart"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM', 'NYSE:JPM')">
+                <div class="stock-header">
+                    <span class="ticker">JPM</span>
+                    <span class="details">
+                        <span class="price">$282.84</span>
+                        <span class="change">-3.02%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM">
+                    <div class="summary-content">
+                        <p>JP Morgan Chase & Co. (JPM)는 글로벌 금융 섹터의 흐름 속에서 기일 대비 -3.02% 하락한 $282.84에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <div id="tvchart_JPM" class="mini-chart"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PC', 'NYSE:JPM/PC')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PC</span>
+                    <span class="details">
+                        <span class="price">$24.86</span>
+                        <span class="change">-0.28%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PC">
+                    <div class="summary-content">
+                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)는 글로벌 금융 섹터의 흐름 속에서 기일 대비 -0.28% 하락한 $24.86에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <div id="tvchart_JPM/PC" class="mini-chart"></div>
                     </div>
                 </div>
             </div>
@@ -337,7 +340,7 @@
                 </div>
                 <div class="stock-summary" id="summary-NVDA">
                     <div class="summary-content">
-                        <p>NVIDIA Corporation (NVDA)는 속한 전자·반도체 섹터의 흐름 속에서 전일 대비 -2.17% 하락한 $167.52에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>NVIDIA Corporation (NVDA)는 글로벌 전자·반도체 섹터의 흐름 속에서 기일 대비 -2.17% 하락한 $167.52에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_NVDA" class="mini-chart"></div>
                     </div>
                 </div>
@@ -353,7 +356,7 @@
                 </div>
                 <div class="stock-summary" id="summary-AAPL">
                     <div class="summary-content">
-                        <p>Apple Inc. (AAPL)는 속한 전자·반도체 섹터의 흐름 속에서 전일 대비 -1.62% 하락한 $248.80에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Apple Inc. (AAPL)는 글로벌 전자·반도체 섹터의 흐름 속에서 기일 대비 -1.62% 하락한 $248.80에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_AAPL" class="mini-chart"></div>
                     </div>
                 </div>
@@ -369,7 +372,7 @@
                 </div>
                 <div class="stock-summary" id="summary-TSM">
                     <div class="summary-content">
-                        <p>Taiwan Semiconductor Manufacturing Company Ltd. (TSM)는 속한 전자·반도체 섹터의 흐름 속에서 전일 대비 0.19% 상승한 $326.74에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Taiwan Semiconductor Manufacturing Company Ltd. (TSM)는 글로벌 전자·반도체 섹터의 흐름 속에서 기일 대비 0.19% 상승한 $326.74에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_TSM" class="mini-chart"></div>
                     </div>
                 </div>
@@ -385,7 +388,7 @@
                 </div>
                 <div class="stock-summary" id="summary-AVGO">
                     <div class="summary-content">
-                        <p>Broadcom Inc. (AVGO)는 속한 전자·반도체 섹터의 흐름 속에서 전일 대비 -2.82% 하락한 $300.68에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Broadcom Inc. (AVGO)는 글로벌 전자·반도체 섹터의 흐름 속에서 기일 대비 -2.82% 하락한 $300.68에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_AVGO" class="mini-chart"></div>
                     </div>
                 </div>
@@ -410,7 +413,7 @@
                 </div>
                 <div class="stock-summary" id="summary-GOOGL">
                     <div class="summary-content">
-                        <p>Alphabet Inc. (GOOGL)는 속한 IT·소프트웨어 섹터의 흐름 속에서 전일 대비 -2.34% 하락한 $274.34에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Alphabet Inc. (GOOGL)는 글로벌 IT·소프트웨어 섹터의 흐름 속에서 기일 대비 -2.34% 하락한 $274.34에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_GOOGL" class="mini-chart"></div>
                     </div>
                 </div>
@@ -426,7 +429,7 @@
                 </div>
                 <div class="stock-summary" id="summary-GOOG">
                     <div class="summary-content">
-                        <p>Alphabet Inc. (GOOG)는 속한 IT·소프트웨어 섹터의 흐름 속에서 전일 대비 -2.49% 하락한 $273.76에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Alphabet Inc. (GOOG)는 글로벌 IT·소프트웨어 섹터의 흐름 속에서 기일 대비 -2.49% 하락한 $273.76에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_GOOG" class="mini-chart"></div>
                     </div>
                 </div>
@@ -442,7 +445,7 @@
                 </div>
                 <div class="stock-summary" id="summary-MSFT">
                     <div class="summary-content">
-                        <p>Microsoft Corporation (MSFT)는 속한 IT·소프트웨어 섹터의 흐름 속에서 전일 대비 -2.51% 하락한 $356.77에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Microsoft Corporation (MSFT)는 글로벌 IT·소프트웨어 섹터의 흐름 속에서 기일 대비 -2.51% 하락한 $356.77에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_MSFT" class="mini-chart"></div>
                     </div>
                 </div>
@@ -458,7 +461,7 @@
                 </div>
                 <div class="stock-summary" id="summary-META">
                     <div class="summary-content">
-                        <p>Meta Platforms, Inc. (META)는 속한 IT·소프트웨어 섹터의 흐름 속에서 전일 대비 -3.99% 하락한 $525.72에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Meta Platforms, Inc. (META)는 글로벌 IT·소프트웨어 섹터의 흐름 속에서 기일 대비 -3.99% 하락한 $525.72에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_META" class="mini-chart"></div>
                     </div>
                 </div>
@@ -483,7 +486,7 @@
                 </div>
                 <div class="stock-summary" id="summary-AMZN">
                     <div class="summary-content">
-                        <p>Amazon.com, Inc. (AMZN)는 속한 소매·유통 섹터의 흐름 속에서 전일 대비 -3.95% 하락한 $199.34에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Amazon.com, Inc. (AMZN)는 글로벌 소매·유통 섹터의 흐름 속에서 기일 대비 -3.95% 하락한 $199.34에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_AMZN" class="mini-chart"></div>
                     </div>
                 </div>
@@ -499,7 +502,7 @@
                 </div>
                 <div class="stock-summary" id="summary-WMT">
                     <div class="summary-content">
-                        <p>Walmart Inc. (WMT)는 속한 소매·유통 섹터의 흐름 속에서 전일 대비 0.58% 상승한 $122.89에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Walmart Inc. (WMT)는 글로벌 소매·유통 섹터의 흐름 속에서 기일 대비 0.58% 상승한 $122.89에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_WMT" class="mini-chart"></div>
                     </div>
                 </div>
@@ -524,7 +527,7 @@
                 </div>
                 <div class="stock-summary" id="summary-TSLA">
                     <div class="summary-content">
-                        <p>Tesla, Inc. (TSLA)는 속한 소비재(내구재) 섹터의 흐름 속에서 전일 대비 -2.76% 하락한 $361.83에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Tesla, Inc. (TSLA)는 글로벌 소비재(내구재) 섹터의 흐름 속에서 기일 대비 -2.76% 하락한 $361.83에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_TSLA" class="mini-chart"></div>
                     </div>
                 </div>
@@ -549,7 +552,7 @@
                 </div>
                 <div class="stock-summary" id="summary-LLY">
                     <div class="summary-content">
-                        <p>Eli Lilly and Company (LLY)는 속한 제약·바이오 섹터의 흐름 속에서 전일 대비 -2.09% 하락한 $878.24에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.</p>
+                        <p>Eli Lilly and Company (LLY)는 글로벌 제약·바이오 섹터의 흐름 속에서 기일 대비 -2.09% 하락한 $878.24에 거래를 마쳤습니다. 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
                         <div id="tvchart_LLY" class="mini-chart"></div>
                     </div>
                 </div>
@@ -589,12 +592,12 @@
                         "interval": "D",
                         "timezone": "America/New_York",
                         "theme": "dark",
-                        "style": "2",
+                        "style": "1", /* Candlestick styling */
                         "locale": "kr",
                         "enable_publishing": false,
                         "backgroundColor": "#131722",
                         "gridColor": "rgba(255, 255, 255, 0.02)",
-                        "hide_top_toolbar": true,
+                        "hide_top_toolbar": false, /* Toolbar enabled */
                         "hide_legend": true,
                         "save_image": false,
                         "container_id": chartId
