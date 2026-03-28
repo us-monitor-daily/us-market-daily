@@ -33,12 +33,23 @@
         .date { font-size: 0.85rem; color: #888; margin-top: 5px; }
         
         .summary-section {
-            background: var(--surface-color);
-            border-radius: 8px; padding: 20px; margin-bottom: 30px;
-            border-left: 4px solid var(--text-accent);
+            background: linear-gradient(135deg, rgba(31, 40, 51, 1), rgba(20, 25, 30, 0.95));
+            border-radius: 12px; padding: 24px; margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--text-accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
-        .summary-section h2 { font-size: 1rem; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .overview-text { font-size: 0.95rem; color: #a9a9a9; }
+        .summary-section h2 { font-size: 1.1rem; color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; }
+        .overview-text { font-size: 1.0rem; color: #d0d0d0; line-height: 1.6; word-break: keep-all; }
+        
+        .chart-container {
+            margin-bottom: 25px;
+            height: 280px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
         
         .sector-group {
             background: var(--surface-color);
@@ -121,8 +132,34 @@
     <div class="container">
         <header>
             <h1>US Market Top 20</h1>
-            <div class="date">2026-03-27 21:08 KST Update</div>
+            <div class="date">2026-03-28 02:25 KST Update</div>
         </header>
+
+        <div class="chart-container">
+            <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
+                <div id="tv_chart" style="height: calc(100% - 32px); width: 100%;"></div>
+                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "SP:SPX",
+                    "interval": "5",
+                    "timezone": "America/New_York",
+                    "theme": "dark",
+                    "style": "2",
+                    "locale": "en",
+                    "enable_publishing": false,
+                    "backgroundColor": "rgba(31, 40, 51, 1)",
+                    "gridColor": "rgba(255, 255, 255, 0.05)",
+                    "hide_top_toolbar": true,
+                    "hide_legend": true,
+                    "save_image": false,
+                    "container_id": "tv_chart"
+                });
+                </script>
+            </div>
+        </div>
         
         
     <div class="summary-section">
@@ -144,21 +181,6 @@
                 
             <div class="stock-item neg" onclick="toggleStock(this)">
                 <div class="stock-header">
-                    <span class="ticker">BRK.A</span>
-                    <span class="details">
-                        <span class="price">$703,699.99</span>
-                        <span class="change">-1.24%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-BRK.A">
-                    <div class="summary-content">
-                        Berkshire Hathaway Inc. (BRK.A)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -1.24% 하락한 $703,699.99에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this)">
-                <div class="stock-header">
                     <span class="ticker">BRK.B</span>
                     <span class="details">
                         <span class="price">$468.49</span>
@@ -174,60 +196,30 @@
             
             <div class="stock-item neg" onclick="toggleStock(this)">
                 <div class="stock-header">
-                    <span class="ticker">JPM/PC</span>
+                    <span class="ticker">BRK.A</span>
                     <span class="details">
-                        <span class="price">$24.86</span>
-                        <span class="change">-0.28%</span>
+                        <span class="price">$703,699.99</span>
+                        <span class="change">-1.24%</span>
                     </span>
                 </div>
-                <div class="stock-summary" id="summary-JPM/PC">
+                <div class="stock-summary" id="summary-BRK.A">
                     <div class="summary-content">
-                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.28% 하락한 $24.86에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                        Berkshire Hathaway Inc. (BRK.A)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -1.24% 하락한 $703,699.99에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
                     </div>
                 </div>
             </div>
             
             <div class="stock-item neg" onclick="toggleStock(this)">
                 <div class="stock-header">
-                    <span class="ticker">JPM/PL</span>
+                    <span class="ticker">JPM</span>
                     <span class="details">
-                        <span class="price">$19.03</span>
-                        <span class="change">-0.99%</span>
+                        <span class="price">$282.84</span>
+                        <span class="change">-3.02%</span>
                     </span>
                 </div>
-                <div class="stock-summary" id="summary-JPM/PL">
+                <div class="stock-summary" id="summary-JPM">
                     <div class="summary-content">
-                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.99% 하락한 $19.03에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this)">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PD</span>
-                    <span class="details">
-                        <span class="price">$24.32</span>
-                        <span class="change">-0.53%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PD">
-                    <div class="summary-content">
-                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.53% 하락한 $24.32에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this)">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PJ</span>
-                    <span class="details">
-                        <span class="price">$19.58</span>
-                        <span class="change">-0.61%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PJ">
-                    <div class="summary-content">
-                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.61% 하락한 $19.58에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                        JP Morgan Chase & Co. (JPM)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -3.02% 하락한 $282.84에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
                     </div>
                 </div>
             </div>
@@ -249,6 +241,36 @@
             
             <div class="stock-item neg" onclick="toggleStock(this)">
                 <div class="stock-header">
+                    <span class="ticker">JPM/PC</span>
+                    <span class="details">
+                        <span class="price">$24.86</span>
+                        <span class="change">-0.28%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PC">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.28% 하락한 $24.86에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this)">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PJ</span>
+                    <span class="details">
+                        <span class="price">$19.58</span>
+                        <span class="change">-0.61%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PJ">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.61% 하락한 $19.58에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this)">
+                <div class="stock-header">
                     <span class="ticker">JPM/PM</span>
                     <span class="details">
                         <span class="price">$17.51</span>
@@ -258,6 +280,21 @@
                 <div class="stock-summary" id="summary-JPM/PM">
                     <div class="summary-content">
                         J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.85% 하락한 $17.51에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this)">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PL</span>
+                    <span class="details">
+                        <span class="price">$19.03</span>
+                        <span class="change">-0.99%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PL">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.99% 하락한 $19.03에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
                     </div>
                 </div>
             </div>
