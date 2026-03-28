@@ -72,7 +72,7 @@
     <div class="container">
         <header>
             <h1>US Market Intelligence</h1>
-            <div class="date">2026-03-28 04:42 KST Update</div>
+            <div class="date">2026-03-28 04:53 KST Update</div>
         </header>
 
         <h2 class="section-header">거시 경제 전략 및 인사이트</h2>
@@ -92,7 +92,7 @@
                 <div class="tradingview-widget-container" style="height: 280px; padding: 10px;">
                   <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
                   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-                  { "interval": "1D", "width": "100%", "isTransparent": true, "height": "100%", "symbol": "SP:SPX", "showIntervalTabs": true, "displayMode": "single", "locale": "kr", "colorTheme": "dark" }
+                  { "interval": "1D", "width": "100%", "isTransparent": true, "height": "100%", "symbol": "SP:SPX", "showIntervalTabs": true, "displayMode": "single", "locale": "en", "colorTheme": "dark" }
                   </script>
                 </div>
             </div>
@@ -114,11 +114,11 @@
               <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
               {
-              "symbols": [ ["S&P 500", "AMEX:SPY|1D"], ["Nasdaq 100", "NASDAQ:QQQ|1D"], ["Dow Jones", "AMEX:DIA|1D"] ],
+              "symbols": [ ["S&P 500", "FOREXCOM:SPXUSD"], ["Nasdaq 100", "FOREXCOM:NSXUSD"], ["Dow Jones", "FOREXCOM:DJI"] ],
               "chartOnly": false,
               "width": "100%",
               "height": "100%",
-              "locale": "kr",
+              "locale": "en",
               "colorTheme": "dark",
               "autosize": true,
               "showVolume": false,
@@ -133,7 +133,7 @@
               "noTimeScale": false,
               "valuesTracking": "1",
               "changeMode": "price-and-percent",
-              "chartType": "candlesticks",
+              "chartType": "area",
               "lineWidth": 2,
               "lineType": 0,
               "dateRanges": [ "1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M" ]
@@ -149,7 +149,7 @@
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
               <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-              { "exchanges": [], "dataSource": "SPX500", "grouping": "sector", "blockSize": "market_cap_basic", "blockColor": "change", "locale": "kr", "colorTheme": "dark", "hasTopBar": false, "isDataSetEnabled": false, "isZoomEnabled": false, "hasSymbolTooltip": true, "width": "100%", "height": "100%" }
+              { "exchanges": [], "dataSource": "SPX500", "grouping": "sector", "blockSize": "market_cap_basic", "blockColor": "change", "locale": "en", "colorTheme": "dark", "hasTopBar": false, "isDataSetEnabled": false, "isZoomEnabled": false, "hasSymbolTooltip": true, "width": "100%", "height": "100%" }
               </script>
             </div>
         </div>
@@ -161,7 +161,7 @@
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
               <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-              { "colorTheme": "dark", "isTransparent": true, "width": "100%", "height": "100%", "locale": "kr", "importanceFilter": "-1,0,1", "currencyFilter": "USD" }
+              { "colorTheme": "dark", "isTransparent": true, "width": "100%", "height": "100%", "locale": "en", "importanceFilter": "-1,0,1", "currencyFilter": "USD" }
               </script>
             </div>
         </div>
@@ -176,7 +176,7 @@
                 금융 <span class="count">(8)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.10% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.12% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
             <div class="stock-item neg" onclick="toggleStock(event, this, 'BRK.B', 'NYSE:BRK.B')">
                 <div class="stock-header">
                     <span class="ticker">BRK.B</span>
@@ -200,7 +200,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/berkshire-just-ended-the-year-with-nearly-375-billion-in-cash-history-says-this-1-etf-still-wins/?.tsrc=rss" target="_blank">Berkshire Just Ended the Year With Nearly $375 Billion in Cash. History Says This 1 ETF Still Wins.</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/cef8939b-90cc-34ba-af62-df2941aeb045/occidental-ceo%E2%80%99s-tenure-may.html?.tsrc=rss" target="_blank">Occidental CEO’s Tenure May Be Ending. It Hasn’t Been Good for the Stock.</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/8f7a637e-b59f-32c1-a8c7-c17409a727c6/why-kraft-heinz%E2%80%99s-ceo-decided.html?.tsrc=rss" target="_blank">Why Kraft Heinz’s CEO Decided Not to Split the Company in Two</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -230,67 +230,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/todd-combs-exit-tests-berkshire-041821536.html?.tsrc=rss" target="_blank">Todd Combs Exit Tests Berkshire Hathaway Leadership And Investment Continuity</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-b-brk-b-214506039.html?.tsrc=rss" target="_blank">Berkshire Hathaway B (BRK.B) Stock Moves -1.43%: What You Should Know</a></li></ul></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PC</span>
-                    <span class="details">
-                        <span class="price">$24.86</span>
-                        <span class="change">-0.28%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PC">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.28% 약세 조정</b>를 기록하며 <b>$24.86</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.28%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PL', 'NYSE:JPM/PL')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PL</span>
-                    <span class="details">
-                        <span class="price">$19.03</span>
-                        <span class="change">-0.99%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PL">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.99% 약세 조정</b>를 기록하며 <b>$19.03</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.99%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PL" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/berkshire-just-ended-the-year-with-nearly-375-billion-in-cash-history-says-this-1-etf-still-wins/?.tsrc=rss" target="_blank">Berkshire Just Ended the Year With Nearly $375 Billion in Cash. History Says This 1 ETF Still Wins.</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/cef8939b-90cc-34ba-af62-df2941aeb045/occidental-ceo%E2%80%99s-tenure-may.html?.tsrc=rss" target="_blank">Occidental CEO’s Tenure May Be Ending. It Hasn’t Been Good for the Stock.</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/8f7a637e-b59f-32c1-a8c7-c17409a727c6/why-kraft-heinz%E2%80%99s-ceo-decided.html?.tsrc=rss" target="_blank">Why Kraft Heinz’s CEO Decided Not to Split the Company in Two</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -387,26 +327,86 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PK', 'NYSE:JPM/PK')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
                 <div class="stock-header">
-                    <span class="ticker">JPM/PK</span>
+                    <span class="ticker">JPM/PC</span>
                     <span class="details">
-                        <span class="price">$18.72</span>
-                        <span class="change">-0.69%</span>
+                        <span class="price">$24.86</span>
+                        <span class="change">-0.28%</span>
                     </span>
                 </div>
-                <div class="stock-summary" id="summary-JPM/PK">
+                <div class="stock-summary" id="summary-JPM/PC">
                     <div class="summary-content">
                         <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.69% 약세 조정</b>를 기록하며 <b>$18.72</b>에 장을 마감했습니다.<br><br>
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.28% 약세 조정</b>를 기록하며 <b>$24.86</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.69%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.28%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
                                 <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PK" class="mini-chart"></div>
+                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PL', 'NYSE:JPM/PL')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PL</span>
+                    <span class="details">
+                        <span class="price">$19.03</span>
+                        <span class="change">-0.99%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PL">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.99% 약세 조정</b>를 기록하며 <b>$19.03</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.99%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PL" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PM', 'NYSE:JPM/PM')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PM</span>
+                    <span class="details">
+                        <span class="price">$17.51</span>
+                        <span class="change">-0.85%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PM">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.85% 약세 조정</b>를 기록하며 <b>$17.51</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.85%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PM" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
@@ -449,7 +449,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/beyond-gas-prices-stock-market-crash-donald-trump/?.tsrc=rss" target="_blank">Look Beyond Skyrocketing Gas Prices! If a Stock Market Crash Takes Shape Under President Donald Trump, the Fed Is Likely to Be the Catalyst.</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/whats-the-better-buy-to-save-for-retirement-bitcoi/?.tsrc=rss" target="_blank">What's the Better Buy to Save for Retirement: Bitcoin vs. Gold</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/nasdaq-correction-stock-market-do-next-shock/?.tsrc=rss" target="_blank">The Nasdaq Just Hit Correction Territory. History Says the Stock Market Will Do This Next (Hint: It May Shock You).</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/voo-vs-voog-vanguard-etf-083109303.html?.tsrc=rss" target="_blank">VOO vs. VOOG: Which Vanguard ETF Has More Upside in 2026?</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/beyond-gas-prices-stock-market-crash-donald-trump/?.tsrc=rss" target="_blank">Look Beyond Skyrocketing Gas Prices! If a Stock Market Crash Takes Shape Under President Donald Trump, the Fed Is Likely to Be the Catalyst.</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/whats-the-better-buy-to-save-for-retirement-bitcoi/?.tsrc=rss" target="_blank">What's the Better Buy to Save for Retirement: Bitcoin vs. Gold</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -479,7 +479,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/u-tech-pullback-mirrors-stages-001247277.html?.tsrc=rss" target="_blank">U.S. tech pullback mirrors late stages of dotcom era, strategists say</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/voo-vs-voog-vanguard-etf-083109303.html?.tsrc=rss" target="_blank">VOO vs. VOOG: Which Vanguard ETF Has More Upside in 2026?</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -539,7 +539,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/3-technology-stocks-that-belong-in-every-long-term/?.tsrc=rss" target="_blank">3 Technology Stocks That Belong in Every Long-Term Portfolio</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/onsemi-allegro-microsystems-entegris-broadcom-004908081.html?.tsrc=rss" target="_blank">onsemi, Allegro MicroSystems, Entegris, Broadcom, and NXP Semiconductors Stocks Trade Down, What You Need To Know</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/voo-vs-voog-vanguard-etf-083109303.html?.tsrc=rss" target="_blank">VOO vs. VOOG: Which Vanguard ETF Has More Upside in 2026?</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/3-technology-stocks-that-belong-in-every-long-term/?.tsrc=rss" target="_blank">3 Technology Stocks That Belong in Every Long-Term Portfolio</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -578,7 +578,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/why-alphabet-googl-down-8-030859351.html?.tsrc=rss" target="_blank">Why Alphabet (GOOGL) Is Down 8.9% After Landmark YouTube Addiction Liability Verdict And What's Next</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/voo-vs-voog-vanguard-etf-083109303.html?.tsrc=rss" target="_blank">VOO vs. VOOG: Which Vanguard ETF Has More Upside in 2026?</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -608,7 +608,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/why-alphabet-googl-down-8-030859351.html?.tsrc=rss" target="_blank">Why Alphabet (GOOGL) Is Down 8.9% After Landmark YouTube Addiction Liability Verdict And What's Next</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/voo-vs-voog-vanguard-etf-083109303.html?.tsrc=rss" target="_blank">VOO vs. VOOG: Which Vanguard ETF Has More Upside in 2026?</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -638,7 +638,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/3-no-brainer-ai-stocks-to-buy-before-they-soar-acc/?.tsrc=rss" target="_blank">3 No-Brainer AI Stocks to Buy Before They Soar, According to Wall Street</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/voo-vs-voog-vanguard-etf-083109303.html?.tsrc=rss" target="_blank">VOO vs. VOOG: Which Vanguard ETF Has More Upside in 2026?</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -668,7 +668,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/look-arm-holdings-nasdaqgs-arm-080446337.html?.tsrc=rss" target="_blank">A Look At Arm Holdings (NasdaqGS:ARM) Valuation After AGI CPU Launch And AI Data Center Push</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/voo-vs-voog-vanguard-etf-083109303.html?.tsrc=rss" target="_blank">VOO vs. VOOG: Which Vanguard ETF Has More Upside in 2026?</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/look-arm-holdings-nasdaqgs-arm-080446337.html?.tsrc=rss" target="_blank">A Look At Arm Holdings (NasdaqGS:ARM) Valuation After AGI CPU Launch And AI Data Center Push</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -707,7 +707,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.thestreet.com/retail/ace-hardware-store-operator-closes-location-no-bankruptcy?.tsrc=rss" target="_blank">79-year-old Home Depot rival closes hardware store, no bankruptcy</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/voo-vs-voog-vanguard-etf-083109303.html?.tsrc=rss" target="_blank">VOO vs. VOOG: Which Vanguard ETF Has More Upside in 2026?</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.thestreet.com/retail/ace-hardware-store-operator-closes-location-no-bankruptcy?.tsrc=rss" target="_blank">79-year-old Home Depot rival closes hardware store, no bankruptcy</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -850,7 +850,7 @@
                         "timezone": "America/New_York",
                         "theme": "dark",
                         "style": "1",
-                        "locale": "kr",
+                        "locale": "en",
                         "enable_publishing": false,
                         "backgroundColor": "#000000",
                         "gridColor": "rgba(255, 255, 255, 0.05)",
