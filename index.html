@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wall Street Market Intelligence</title>
+    <title>US Market Intelligence</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #131722;
-            --surface-color: #1e222d;
-            --text-main: #d1d4dc;
-            --text-mute: #787b86;
-            --text-accent: #2962ff;
-            --border-color: #2a2e39;
-            --accent-pos: #ff4b4b; 
-            --accent-neg: #3b82f6; 
+            --bg-color: #000000;
+            --surface-color: #0c0c0e;
+            --text-main: #e2e2e2;
+            --text-mute: #757575;
+            --text-accent: #ffffff;
+            --border-color: #222222;
+            --accent-pos: #00e676; 
+            --accent-neg: #ff1744; 
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
@@ -23,86 +23,94 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding: 25px max(5vw, 20px);
+            padding: 40px max(4vw, 20px);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
         
-        .container { max-width: 900px; margin: 0 auto; }
+        .container { max-width: 960px; margin: 0 auto; }
         
-        /* Mobile Scroll Protection Safe Zones */
-        .safe-scroll-zone {
-            height: 35px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: var(--text-mute);
-            opacity: 0.3;
-        }
+        .safe-scroll-zone { height: 40px; width: 100%; }
         
-        header { margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
-        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-        .date { font-size: 0.95rem; color: var(--text-mute); margin-top: 6px; letter-spacing: 1px; text-transform: uppercase; }
+        header { margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px; }
+        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; text-transform: uppercase; }
+        .date { font-size: 0.85rem; color: var(--text-mute); margin-top: 8px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
         
-        .section-header { font-size: 1.25rem; color: #fff; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-left: 4px solid var(--text-accent); padding-left: 12px; }
-        .section-desc { font-size: 0.9rem; color: var(--text-mute); margin-bottom: 15px; margin-top: -10px; }
+        .section-header { font-size: 1.1rem; color: #fff; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; border-left: 2px solid #fff; padding-left: 12px; }
+        .section-desc { font-size: 0.9rem; color: var(--text-mute); margin-bottom: 20px; margin-top: -10px; font-weight: 300; }
         
         .widget-box {
             background: var(--surface-color);
-            border-radius: 12px;
+            border-radius: 4px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
         }
         
-        /* Grid for sentiment & summary */
         .top-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         @media (max-width: 768px) {
             .top-grid { grid-template-columns: 1fr; }
         }
         
-        .summary-section {
-            background: linear-gradient(180deg, rgba(30, 34, 45, 1) 0%, rgba(19, 23, 34, 0.4) 100%);
-            border-radius: 12px; padding: 24px;
+        /* Custom News Modules */
+        .global-news-container {
+            background: var(--surface-color);
             border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 24px;
+            height: 100%;
         }
-        .summary-section h2 { font-size: 1.1rem; color: #fff; margin-bottom: 12px; font-weight: 600; text-transform: uppercase; }
-        .overview-text { font-size: 1rem; color: var(--text-main); line-height: 1.7; word-break: keep-all; }
-        .overview-text b { color: #fff; }
+        .global-news-container h2 { font-size: 1.05rem; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .news-list { list-style-type: none; }
+        .news-item { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .news-item:last-child { border-bottom: none; }
+        .news-item a { color: #ccc; text-decoration: none; font-size: 0.95rem; font-weight: 400; line-height: 1.5; transition: color 0.2s; }
+        .news-item a:hover { color: #fff; text-decoration: underline; }
+        .empty-news { color: #555; font-size: 0.9rem; font-style: italic; }
+        
+        .summary-section {
+            background: var(--surface-color);
+            border-radius: 4px; padding: 30px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .summary-section h2 { font-size: 1.05rem; color: #fff; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .overview-text { font-size: 0.95rem; color: #aaa; line-height: 1.8; font-weight: 300; }
+        .overview-text b { color: #fff; font-weight: 500; }
         
         /* Sector Accodion */
         .sector-group {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 0;
             margin-bottom: 16px;
-            overflow: hidden;
         }
         .sector-header {
-            padding: 18px 24px; font-size: 1.1rem; font-weight: 600; color: #fff;
+            padding: 20px 24px; font-size: 1.05rem; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 1px;
             cursor: pointer; display: flex; justify-content: space-between; align-items: center;
         }
         .sector-header:hover { background: rgba(255,255,255,0.03); }
-        .sector-header .count { font-size: 0.95rem; color: var(--text-mute); font-weight: 400; }
+        .sector-header .count { font-size: 0.85rem; color: var(--text-mute); font-weight: 400; }
         .sector-content { border-top: 1px solid var(--border-color); }
         
-        .sector-briefing { padding: 18px 24px; background: rgba(0,0,0,0.25); border-bottom: 1px solid var(--border-color); }
-        .sector-briefing p { font-size: 0.95rem; color: #b2b5be; line-height: 1.6; font-weight: 500; }
+        .sector-briefing { padding: 20px 24px; background: rgba(0,0,0,0.4); border-bottom: 1px solid var(--border-color); }
+        .sector-briefing p { font-size: 0.9rem; color: #999; line-height: 1.6; font-weight: 400; }
+        .sector-briefing b { color: #ccc; font-weight: 600; }
         
         .stock-item { padding: 20px 24px; border-bottom: 1px solid var(--border-color); cursor: pointer; }
         .stock-item:hover { background: rgba(255,255,255,0.02); }
         .stock-header { display: flex; justify-content: space-between; align-items: center; }
-        .ticker { font-weight: 700; color: #fff; font-size: 1.2rem; width: 90px; }
+        .ticker { font-weight: 700; color: #fff; font-size: 1.15rem; width: 90px; }
         .details { display: flex; align-items: center; gap: 24px; }
-        .price { font-size: 1.1rem; color: var(--text-main); font-weight: 500; }
-        .change { font-weight: 600; font-size: 1.1rem; text-align: right; width: 80px; }
+        .price { font-size: 1.05rem; color: var(--text-main); font-weight: 500; }
+        .change { font-weight: 600; font-size: 1.05rem; text-align: right; width: 80px; letter-spacing: 0.5px; }
         
         .pos .change { color: var(--accent-pos); }
         .neg .change { color: var(--accent-neg); }
@@ -111,27 +119,47 @@
         .stock-summary { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
         .expanded .stock-summary { max-height: 1200px; }
         
-        .summary-content { margin-top: 20px; padding: 24px; background: rgba(0,0,0,0.2); border-radius: 10px; font-size: 1rem; color: #b2b5be; border-left: 3px solid var(--border-color); }
-        .summary-content p { margin-bottom: 20px; font-weight: 500; font-size: 1.05rem; line-height: 1.6; color: #d1d4dc; }
+        .summary-content { margin-top: 24px; border-top: 1px dashed var(--border-color); padding-top: 24px; }
+        .bot-analysis { margin-bottom: 24px; font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: #aaa; padding-left: 16px; border-left: 2px solid #555; }
+        .bot-analysis b { color: #fff; font-weight: 500; }
         
-        /* Addon Dual Grid for expanded view */
-        .addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         @media (max-width: 768px) { .addon-grid { grid-template-columns: 1fr; } }
-        .addon-col h3 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 12px; }
-        .mini-chart { height: 300px; width: 100%; border-radius: 8px; overflow: hidden; background-color: var(--surface-color); }
         
-        .open .count { transform: rotate(180deg); display: inline-block; transition: transform 0.3s; }
+        .box-title { font-size: 0.85rem; font-weight: 600; color: #888; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .mini-chart { height: 280px; width: 100%; border: 1px solid var(--border-color); background-color: var(--bg-color); }
+        .news-container { height: 280px; padding: 16px; border: 1px solid var(--border-color); background: var(--surface-color); overflow-y: auto; }
+        
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Wall Street Market Intelligence</h1>
-            <div class="date">2026-03-28 03:23 KST Update</div>
+            <h1>US Market Intelligence</h1>
+            <div class="date">2026-03-28 04:17 KST Update</div>
         </header>
 
-        <!-- Sector Heatmap -->
-        <h2 class="section-header">섹터 히트맵 (S&P 500)</h2>
+        <h2 class="section-header">Macro Strategy & Insights</h2>
+        <div class="top-grid">
+            
+    <div class="summary-section">
+        <h2>EXECUTIVE MARKET BRIEF</h2>
+        <p class="overview-text">오늘 미국 증시 시가총액 상위 20개 종목을 분석한 결과, 상승은 2개, 하락은 18개로 나타났습니다. 
+    초대형 기술주 중심의 강력한 매도 우위가 지수 전반의 하방을 견인하고 있습니다. 
+    독립 거래 세션에서는 <b>Walmart Inc. (WMT)</b>에 강력한 포지션이 구축되며 <b>0.58%</b> 의 당일 최고 상승률을 보인 반면, 
+    <b>Meta Platforms, Inc. (META)</b>는 <b>-3.99%</b> 급락하며 핵심 지지선을 위협받고 있습니다.</p>
+    </div>
+    
+            
+            <div class="global-news-container">
+                <h2>Yahoo Finance Market Brief</h2>
+                <ul class="news-list"><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/oef-returned-314-83-over-10-years-while-spy-managed-223-37/?.tsrc=rss" target="_blank">OEF Returned 314.83% Over 10 Years While SPY Managed 223.37%</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/pre-markets-down-again-ahead-143300300.html?.tsrc=rss" target="_blank">Pre-Markets Down Again Ahead of Weekend</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/market-minute-3-27-26-141500250.html?.tsrc=rss" target="_blank">Market Minute 3-27-26- Deadline Can Kick Earns Market Shrug</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131702047.html?.tsrc=rss" target="_blank">Exchange-Traded Funds, Equity Futures Lower Pre-Bell Friday as Investor Concerns Linger Amid Middle East Conflict</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/3-etfs-that-are-beating-the-market-right-now-and-none-of-them-are-the-ones-everyone-already-owns/?.tsrc=rss" target="_blank">3 ETFs That Are Beating the Market Right Now — and None of Them Are the Ones Everyone Already Owns</a></li></ul>
+            </div>
+        </div>
+        <div class="safe-scroll-zone"></div>
+        
+        <h2 class="section-header">S&P 500 Heatmap Analysis</h2>
+        <p class="section-desc">글로벌 섹터별 자본 유입 현황 및 상대적 모멘텀 시각화 데이터입니다.</p>
         <div class="widget-box" style="height: 320px;">
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
               <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
@@ -142,7 +170,7 @@
               "grouping": "sector",
               "blockSize": "market_cap_basic",
               "blockColor": "change",
-              "locale": "kr",
+              "locale": "en",
               "colorTheme": "dark",
               "hasTopBar": false,
               "isDataSetEnabled": false,
@@ -154,72 +182,10 @@
               </script>
             </div>
         </div>
-        <div class="safe-scroll-zone">스크롤 여백</div>
+        <div class="safe-scroll-zone"></div>
 
-        <div class="top-grid">
-            <!-- Technical Gauge (Fear/Greed equivalent) -->
-            <div class="widget-box" style="margin-bottom: 0;">
-                <h2 style="padding: 16px 20px; font-size: 1.05rem; font-weight: 600; color: #fff; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border-color); margin: 0; text-transform: uppercase;">시장 심리 지수 (Market Sentiment)</h2>
-                <div class="tradingview-widget-container" style="height: 280px; padding: 10px;">
-                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-                  {
-                  "interval": "1D",
-                  "width": "100%",
-                  "isTransparent": true,
-                  "height": "100%",
-                  "symbol": "SP:SPX",
-                  "showIntervalTabs": true,
-                  "displayMode": "single",
-                  "locale": "kr",
-                  "colorTheme": "dark"
-                  }
-                  </script>
-                </div>
-            </div>
-            
-            <!-- Summary inside top grid -->
-            
-    <div class="summary-section">
-        <h2>Daily Market Briefing</h2>
-        <p class="overview-text">금일 시가총액 상위 20개 종목 중 상승은 <b>2종목</b>, 하락은 <b>18종목</b>으로 집계되었습니다. 대형 기술주를 중심으로 강한 매도세가 출회되며 지수 전반의 하방 압력이 가중되었습니다.
-    특히 오늘 장에서는 <b>Walmart Inc. (WMT)</b>가 0.58%의 눈에 띄는 상승을 기록하며 시장의 이목을 집중시킨 반면, 
-    <b>Meta Platforms, Inc. (META)</b>는 -3.99% 하락하며 부진한 흐름을 지속했습니다. 현재 시장은 주요 거시 경제 지표 발표와 섹터별 순환매 장세에 깊이 영향받고 있으며, 기관 투자자들은 주요 대형주들의 단기 기술적 저항선 돌파 여부를 예의주시하고 있습니다.</p>
-    </div>
-    
-        </div>
-        <div class="safe-scroll-zone">스크롤 여백</div>
-        
-        <h2 class="section-header">S&P 500 캔들스틱 시황</h2>
-        <div class="widget-box" style="height: 380px;">
-            <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
-                <div id="tv_chart_spx" style="height: calc(100% - 32px); width: 100%;"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                <script type="text/javascript">
-                new TradingView.widget({
-                    "autosize": true,
-                    "symbol": "SP:SPX",
-                    "interval": "D",
-                    "timezone": "America/New_York",
-                    "theme": "dark",
-                    "style": "1", /* Candles */
-                    "locale": "kr",
-                    "enable_publishing": false,
-                    "backgroundColor": "rgba(31, 40, 51, 0)",
-                    "gridColor": "rgba(255, 255, 255, 0.05)",
-                    "hide_top_toolbar": false,
-                    "hide_legend": false,
-                    "save_image": false,
-                    "container_id": "tv_chart_spx"
-                });
-                </script>
-            </div>
-        </div>
-        <div class="safe-scroll-zone">스크롤 여백</div>
-
-        <!-- Earnings Calendar -->
-        <h2 class="section-header">글로벌 주요 경제 지표 발표 일정</h2>
-        <p class="section-desc">향후 시장 변동성에 단기적인 영향을 미칠 수 있는 주요 거시 경제 지표들의 발표 일정입니다.</p>
+        <h2 class="section-header">Upcoming Macro Events</h2>
+        <p class="section-desc">향후 글로벌 변동성에 단기적 영향을 미칠 수 있는 핵심 거시 지표 및 어닝 캘린더입니다.</p>
         <div class="widget-box" style="height: 350px;">
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
               <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
@@ -229,26 +195,27 @@
               "isTransparent": true,
               "width": "100%",
               "height": "100%",
-              "locale": "kr",
+              "locale": "en",
               "importanceFilter": "-1,0,1",
               "currencyFilter": "USD"
               }
               </script>
             </div>
         </div>
-        <div class="safe-scroll-zone">스크롤 여백</div>
+        <div class="safe-scroll-zone"></div>
         
-        <h2 class="section-header">시가총액 상위 20 분석 (섹터별)</h2>
+        <h2 class="section-header">Institution Grade Monitor (Top 20)</h2>
+        <p class="section-desc">자본 시가총액 최상위 리더십 편입 종목들에 대한 섹터별 고도화 분석입니다.</p>
         <div class="sectors-container">
             
         <div class="sector-group">
             <div class="sector-header" onclick="toggleSector(this)">
-                금융 <span class="count">(8) ▾</span>
+                금융 <span class="count">(8)</span>
             </div>
             <div class="sector-content" style="display: none;">
                 
         <div class="sector-briefing">
-            <p>금융 섹터 내 상위 8개 종목은 평균적으로 전일 대비 1.08% 하락하며 전체 시장 흐름 대비 특유의 산업 변동성을 보여주었습니다.</p>
+            <p>해당 섹터 종목들은 평균 <b>1.12% 하락</b>하며, 전체 시장 수익률 패턴과 대비되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p>
         </div>
         
             <div class="stock-item neg" onclick="toggleStock(event, this, 'BRK.B', 'NYSE:BRK.B')">
@@ -261,29 +228,17 @@
                 </div>
                 <div class="stock-summary" id="summary-BRK.B">
                     <div class="summary-content">
-                        <p>Berkshire Hathaway Inc. New (BRK.B)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -1.43% 하락한 $468.49로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">BRK.B는 오늘 글로벌 금융 산업 사이클 속에서 전일 대비 <b>-1.43% 약세</b> 흐름을 보이며 마감되었습니다 ($ 468.49). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_BRK.B" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:BRK.B",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: BRK.B</h3>
+                                <div class="news-container">
+                                    <p class='empty-news'>최신 관련 기사가 없습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -301,149 +256,17 @@
                 </div>
                 <div class="stock-summary" id="summary-BRK.A">
                     <div class="summary-content">
-                        <p>Berkshire Hathaway Inc. (BRK.A)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -1.24% 하락한 $703,699.99로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">BRK.A는 오늘 글로벌 금융 산업 사이클 속에서 전일 대비 <b>-1.24% 약세</b> 흐름을 보이며 마감되었습니다 ($ 703,699.99). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_BRK.A" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:BRK.A",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PJ', 'NYSE:JPM/PJ')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PJ</span>
-                    <span class="details">
-                        <span class="price">$19.58</span>
-                        <span class="change">-0.61%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PJ">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.61% 하락한 $19.58로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
-                        
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
-                                <div id="tvchart_JPM/PJ" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM/PJ",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PC</span>
-                    <span class="details">
-                        <span class="price">$24.86</span>
-                        <span class="change">-0.28%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PC">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.28% 하락한 $24.86로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
-                        
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
-                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM/PC",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PK', 'NYSE:JPM/PK')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PK</span>
-                    <span class="details">
-                        <span class="price">$18.72</span>
-                        <span class="change">-0.69%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PK">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.69% 하락한 $18.72로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
-                        
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
-                                <div id="tvchart_JPM/PK" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM/PK",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: BRK.A</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/todd-combs-exit-tests-berkshire-041821536.html?.tsrc=rss" target="_blank">Todd Combs Exit Tests Berkshire Hathaway Leadership And Investment Continuity</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-b-brk-b-214506039.html?.tsrc=rss" target="_blank">Berkshire Hathaway B (BRK.B) Stock Moves -1.43%: What You Should Know</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -461,29 +284,17 @@
                 </div>
                 <div class="stock-summary" id="summary-JPM/PD">
                     <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.53% 하락한 $24.32로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">JPM/PD는 오늘 글로벌 금융 산업 사이클 속에서 전일 대비 <b>-0.53% 약세</b> 흐름을 보이며 마감되었습니다 ($ 24.32). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_JPM/PD" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM/PD",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: JPM/PD</h3>
+                                <div class="news-container">
+                                    <p class='empty-news'>최신 관련 기사가 없습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -491,39 +302,27 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PM', 'NYSE:JPM/PM')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
                 <div class="stock-header">
-                    <span class="ticker">JPM/PM</span>
+                    <span class="ticker">JPM/PC</span>
                     <span class="details">
-                        <span class="price">$17.51</span>
-                        <span class="change">-0.85%</span>
+                        <span class="price">$24.86</span>
+                        <span class="change">-0.28%</span>
                     </span>
                 </div>
-                <div class="stock-summary" id="summary-JPM/PM">
+                <div class="stock-summary" id="summary-JPM/PC">
                     <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.85% 하락한 $17.51로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">JPM/PC는 오늘 글로벌 금융 산업 사이클 속에서 전일 대비 <b>-0.28% 약세</b> 흐름을 보이며 마감되었습니다 ($ 24.86). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
-                                <div id="tvchart_JPM/PM" class="mini-chart"></div>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
+                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM/PM",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: JPM/PC</h3>
+                                <div class="news-container">
+                                    <p class='empty-news'>최신 관련 기사가 없습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -541,29 +340,101 @@
                 </div>
                 <div class="stock-summary" id="summary-JPM">
                     <div class="summary-content">
-                        <p>JP Morgan Chase & Co. (JPM)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -3.02% 하락한 $282.84로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">JPM는 오늘 글로벌 금융 산업 사이클 속에서 전일 대비 <b>-3.02% 약세</b> 흐름을 보이며 마감되었습니다 ($ 282.84). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_JPM" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: JPM</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/standard-chartered-lse-stan-story-001529188.html?.tsrc=rss" target="_blank">How The Standard Chartered (LSE:STAN) Story Is Shifting As Analyst Targets Converge</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/regulatory-shifts-tech-ambitions-jpmorgan-230609475.html?.tsrc=rss" target="_blank">How Regulatory Shifts and Tech Ambitions At JPMorgan Chase (JPM) Have Changed Its Investment Story</a></li><li class="news-item"><a href="https://finance.yahoo.com/news/dollar-best-month-since-july-235930427.html?.tsrc=rss" target="_blank">Wall Street’s FX Roadmap Roiled by Dollar’s Best Run Since 2024</a></li></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PL', 'NYSE:JPM/PL')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PL</span>
+                    <span class="details">
+                        <span class="price">$19.03</span>
+                        <span class="change">-0.99%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PL">
+                    <div class="summary-content">
+                        <p class="bot-analysis">JPM/PL는 오늘 글로벌 금융 산업 사이클 속에서 전일 대비 <b>-0.99% 약세</b> 흐름을 보이며 마감되었습니다 ($ 19.03). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
+                        
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">TECHNICAL CHART</h3>
+                                <div id="tvchart_JPM/PL" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">YAHOO FINANCE: JPM/PL</h3>
+                                <div class="news-container">
+                                    <p class='empty-news'>최신 관련 기사가 없습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PM', 'NYSE:JPM/PM')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PM</span>
+                    <span class="details">
+                        <span class="price">$17.51</span>
+                        <span class="change">-0.85%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PM">
+                    <div class="summary-content">
+                        <p class="bot-analysis">JPM/PM는 오늘 글로벌 금융 산업 사이클 속에서 전일 대비 <b>-0.85% 약세</b> 흐름을 보이며 마감되었습니다 ($ 17.51). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
+                        
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">TECHNICAL CHART</h3>
+                                <div id="tvchart_JPM/PM" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">YAHOO FINANCE: JPM/PM</h3>
+                                <div class="news-container">
+                                    <p class='empty-news'>최신 관련 기사가 없습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PJ', 'NYSE:JPM/PJ')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PJ</span>
+                    <span class="details">
+                        <span class="price">$19.58</span>
+                        <span class="change">-0.61%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PJ">
+                    <div class="summary-content">
+                        <p class="bot-analysis">JPM/PJ는 오늘 글로벌 금융 산업 사이클 속에서 전일 대비 <b>-0.61% 약세</b> 흐름을 보이며 마감되었습니다 ($ 19.58). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
+                        
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">TECHNICAL CHART</h3>
+                                <div id="tvchart_JPM/PJ" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">YAHOO FINANCE: JPM/PJ</h3>
+                                <div class="news-container">
+                                    <p class='empty-news'>최신 관련 기사가 없습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -576,12 +447,12 @@
         
         <div class="sector-group">
             <div class="sector-header" onclick="toggleSector(this)">
-                전자·반도체 <span class="count">(4) ▾</span>
+                전자·반도체 <span class="count">(4)</span>
             </div>
             <div class="sector-content" style="display: none;">
                 
         <div class="sector-briefing">
-            <p>전자·반도체 섹터 내 상위 4개 종목은 평균적으로 전일 대비 1.60% 하락하며 전체 시장 흐름 대비 특유의 산업 변동성을 보여주었습니다.</p>
+            <p>해당 섹터 종목들은 평균 <b>1.60% 하락</b>하며, 전체 시장 수익률 패턴과 대비되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p>
         </div>
         
             <div class="stock-item neg" onclick="toggleStock(event, this, 'NVDA', 'NASDAQ:NVDA')">
@@ -594,29 +465,17 @@
                 </div>
                 <div class="stock-summary" id="summary-NVDA">
                     <div class="summary-content">
-                        <p>NVIDIA Corporation (NVDA)는 글로벌 전자·반도체 섹터 흐름에 편승하여 일일 기준 -2.17% 하락한 $167.52로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">NVDA는 오늘 글로벌 전자·반도체 산업 사이클 속에서 전일 대비 <b>-2.17% 약세</b> 흐름을 보이며 마감되었습니다 ($ 167.52). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_NVDA" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:NVDA",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: NVDA</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/nasdaq-correction-stock-market-do-next-shock/?.tsrc=rss" target="_blank">The Nasdaq Just Hit Correction Territory. History Says the Stock Market Will Do This Next (Hint: It May Shock You).</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/prediction-the-trump-bull-market-is-about-to-end-b/?.tsrc=rss" target="_blank">Prediction: The Trump Bull Market Is About to End -- but These Stocks Will Rise Anyway</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/nvidia-gtc-2026-unveils-vera-070536912.html?.tsrc=rss" target="_blank">NVIDIA GTC 2026 Unveils Vera Rubin AI Factories And Investor Questions</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -634,29 +493,17 @@
                 </div>
                 <div class="stock-summary" id="summary-AAPL">
                     <div class="summary-content">
-                        <p>Apple Inc. (AAPL)는 글로벌 전자·반도체 섹터 흐름에 편승하여 일일 기준 -1.62% 하락한 $248.80로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">AAPL는 오늘 글로벌 전자·반도체 산업 사이클 속에서 전일 대비 <b>-1.62% 약세</b> 흐름을 보이며 마감되었습니다 ($ 248.80). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_AAPL" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:AAPL",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: AAPL</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/u-tech-pullback-mirrors-stages-001247277.html?.tsrc=rss" target="_blank">U.S. tech pullback mirrors late stages of dotcom era, strategists say</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -674,29 +521,17 @@
                 </div>
                 <div class="stock-summary" id="summary-TSM">
                     <div class="summary-content">
-                        <p>Taiwan Semiconductor Manufacturing Company Ltd. (TSM)는 글로벌 전자·반도체 섹터 흐름에 편승하여 일일 기준 0.19% 상승한 $326.74로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">TSM는 오늘 글로벌 전자·반도체 산업 사이클 속에서 전일 대비 <b>0.19% 강세</b> 흐름을 보이며 마감되었습니다 ($ 326.74). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_TSM" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:TSM",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: TSM</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/assessing-taiwan-semiconductor-nyse-tsm-170806521.html?.tsrc=rss" target="_blank">Assessing Taiwan Semiconductor (NYSE:TSM) Valuation After Recent Pullback And Conflicting Fair Value Signals</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/broadcom-vs-tsmc-ai-chip-165415420.html?.tsrc=rss" target="_blank">Broadcom vs. TSMC: Which AI Chip Stock Is the Better Buy?</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -714,29 +549,17 @@
                 </div>
                 <div class="stock-summary" id="summary-AVGO">
                     <div class="summary-content">
-                        <p>Broadcom Inc. (AVGO)는 글로벌 전자·반도체 섹터 흐름에 편승하여 일일 기준 -2.82% 하락한 $300.68로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">AVGO는 오늘 글로벌 전자·반도체 산업 사이클 속에서 전일 대비 <b>-2.82% 약세</b> 흐름을 보이며 마감되었습니다 ($ 300.68). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_AVGO" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:AVGO",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: AVGO</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/3-technology-stocks-that-belong-in-every-long-term/?.tsrc=rss" target="_blank">3 Technology Stocks That Belong in Every Long-Term Portfolio</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/onsemi-allegro-microsystems-entegris-broadcom-004908081.html?.tsrc=rss" target="_blank">onsemi, Allegro MicroSystems, Entegris, Broadcom, and NXP Semiconductors Stocks Trade Down, What You Need To Know</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -749,12 +572,12 @@
         
         <div class="sector-group">
             <div class="sector-header" onclick="toggleSector(this)">
-                IT·소프트웨어 <span class="count">(4) ▾</span>
+                IT·소프트웨어 <span class="count">(4)</span>
             </div>
             <div class="sector-content" style="display: none;">
                 
         <div class="sector-briefing">
-            <p>IT·소프트웨어 섹터 내 상위 4개 종목은 평균적으로 전일 대비 2.83% 하락하며 전체 시장 흐름 대비 특유의 산업 변동성을 보여주었습니다.</p>
+            <p>해당 섹터 종목들은 평균 <b>2.83% 하락</b>하며, 전체 시장 수익률 패턴과 대비되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p>
         </div>
         
             <div class="stock-item neg" onclick="toggleStock(event, this, 'GOOGL', 'NASDAQ:GOOGL')">
@@ -767,29 +590,17 @@
                 </div>
                 <div class="stock-summary" id="summary-GOOGL">
                     <div class="summary-content">
-                        <p>Alphabet Inc. (GOOGL)는 글로벌 IT·소프트웨어 섹터 흐름에 편승하여 일일 기준 -2.34% 하락한 $274.34로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">GOOGL는 오늘 글로벌 IT·소프트웨어 산업 사이클 속에서 전일 대비 <b>-2.34% 약세</b> 흐름을 보이며 마감되었습니다 ($ 274.34). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_GOOGL" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:GOOGL",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: GOOGL</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/why-alphabet-googl-down-8-030859351.html?.tsrc=rss" target="_blank">Why Alphabet (GOOGL) Is Down 8.9% After Landmark YouTube Addiction Liability Verdict And What's Next</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -807,29 +618,17 @@
                 </div>
                 <div class="stock-summary" id="summary-GOOG">
                     <div class="summary-content">
-                        <p>Alphabet Inc. (GOOG)는 글로벌 IT·소프트웨어 섹터 흐름에 편승하여 일일 기준 -2.49% 하락한 $273.76로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">GOOG는 오늘 글로벌 IT·소프트웨어 산업 사이클 속에서 전일 대비 <b>-2.49% 약세</b> 흐름을 보이며 마감되었습니다 ($ 273.76). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_GOOG" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:GOOG",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: GOOG</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/why-alphabet-googl-down-8-030859351.html?.tsrc=rss" target="_blank">Why Alphabet (GOOGL) Is Down 8.9% After Landmark YouTube Addiction Liability Verdict And What's Next</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -847,29 +646,17 @@
                 </div>
                 <div class="stock-summary" id="summary-MSFT">
                     <div class="summary-content">
-                        <p>Microsoft Corporation (MSFT)는 글로벌 IT·소프트웨어 섹터 흐름에 편승하여 일일 기준 -2.51% 하락한 $356.77로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">MSFT는 오늘 글로벌 IT·소프트웨어 산업 사이클 속에서 전일 대비 <b>-2.51% 약세</b> 흐름을 보이며 마감되었습니다 ($ 356.77). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_MSFT" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:MSFT",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: MSFT</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/3-no-brainer-ai-stocks-to-buy-before-they-soar-acc/?.tsrc=rss" target="_blank">3 No-Brainer AI Stocks to Buy Before They Soar, According to Wall Street</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -887,29 +674,17 @@
                 </div>
                 <div class="stock-summary" id="summary-META">
                     <div class="summary-content">
-                        <p>Meta Platforms, Inc. (META)는 글로벌 IT·소프트웨어 섹터 흐름에 편승하여 일일 기준 -3.99% 하락한 $525.72로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">META는 오늘 글로벌 IT·소프트웨어 산업 사이클 속에서 전일 대비 <b>-3.99% 약세</b> 흐름을 보이며 마감되었습니다 ($ 525.72). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_META" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:META",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: META</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/economy/policy/articles/indonesia-follows-australia-lead-landmark-070827495.html?.tsrc=rss" target="_blank">Indonesia follows Australia’s lead with landmark social media ban for minors</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/entergy-etr-rallies-6-8-041828890.html?.tsrc=rss" target="_blank">Entergy (ETR) Rallies 6.8% on Meta Deal</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -922,12 +697,12 @@
         
         <div class="sector-group">
             <div class="sector-header" onclick="toggleSector(this)">
-                소매·유통 <span class="count">(2) ▾</span>
+                소매·유통 <span class="count">(2)</span>
             </div>
             <div class="sector-content" style="display: none;">
                 
         <div class="sector-briefing">
-            <p>소매·유통 섹터 내 상위 2개 종목은 평균적으로 전일 대비 1.69% 하락하며 전체 시장 흐름 대비 특유의 산업 변동성을 보여주었습니다.</p>
+            <p>해당 섹터 종목들은 평균 <b>1.69% 하락</b>하며, 전체 시장 수익률 패턴과 대비되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p>
         </div>
         
             <div class="stock-item neg" onclick="toggleStock(event, this, 'AMZN', 'NASDAQ:AMZN')">
@@ -940,29 +715,17 @@
                 </div>
                 <div class="stock-summary" id="summary-AMZN">
                     <div class="summary-content">
-                        <p>Amazon.com, Inc. (AMZN)는 글로벌 소매·유통 섹터 흐름에 편승하여 일일 기준 -3.95% 하락한 $199.34로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">AMZN는 오늘 글로벌 소매·유통 산업 사이클 속에서 전일 대비 <b>-3.95% 약세</b> 흐름을 보이며 마감되었습니다 ($ 199.34). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_AMZN" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:AMZN",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: AMZN</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.thestreet.com/retail/ace-hardware-store-operator-closes-location-no-bankruptcy?.tsrc=rss" target="_blank">79-year-old Home Depot rival closes hardware store, no bankruptcy</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -980,29 +743,17 @@
                 </div>
                 <div class="stock-summary" id="summary-WMT">
                     <div class="summary-content">
-                        <p>Walmart Inc. (WMT)는 글로벌 소매·유통 섹터 흐름에 편승하여 일일 기준 0.58% 상승한 $122.89로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">WMT는 오늘 글로벌 소매·유통 산업 사이클 속에서 전일 대비 <b>0.58% 강세</b> 흐름을 보이며 마감되었습니다 ($ 122.89). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_WMT" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:WMT",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: WMT</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/walmart-fine-raises-questions-climate-010514534.html?.tsrc=rss" target="_blank">Walmart Fine Raises Questions On Climate Compliance And Investment Risks</a></li><li class="news-item"><a href="https://www.thestreet.com/retail/home-depot-targets-100-billion-market-with-new-deal?.tsrc=rss" target="_blank">Home Depot targets $100 billion market with new deal</a></li><li class="news-item"><a href="https://finance.yahoo.com/video/why-you-should-never-count-out-google-215424047.html?.tsrc=rss" target="_blank">Why you should 'never count out' Google</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -1015,12 +766,12 @@
         
         <div class="sector-group">
             <div class="sector-header" onclick="toggleSector(this)">
-                소비재(내구재) <span class="count">(1) ▾</span>
+                소비재(내구재) <span class="count">(1)</span>
             </div>
             <div class="sector-content" style="display: none;">
                 
         <div class="sector-briefing">
-            <p>소비재(내구재) 섹터 내 상위 1개 종목은 평균적으로 전일 대비 2.76% 하락하며 전체 시장 흐름 대비 특유의 산업 변동성을 보여주었습니다.</p>
+            <p>해당 섹터 종목들은 평균 <b>2.76% 하락</b>하며, 전체 시장 수익률 패턴과 대비되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p>
         </div>
         
             <div class="stock-item neg" onclick="toggleStock(event, this, 'TSLA', 'NASDAQ:TSLA')">
@@ -1033,29 +784,17 @@
                 </div>
                 <div class="stock-summary" id="summary-TSLA">
                     <div class="summary-content">
-                        <p>Tesla, Inc. (TSLA)는 글로벌 소비재(내구재) 섹터 흐름에 편승하여 일일 기준 -2.76% 하락한 $361.83로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">TSLA는 오늘 글로벌 소비재(내구재) 산업 사이클 속에서 전일 대비 <b>-2.76% 약세</b> 흐름을 보이며 마감되었습니다 ($ 361.83). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_TSLA" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NASDAQ:TSLA",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: TSLA</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/there-are-10-trillion-dollar-companies-this-is-the/?.tsrc=rss" target="_blank">There Are 10 Trillion-Dollar Stocks On the Market. This Is the Only One That's Up This Year</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/27/every-magnificent-seven-stock-is-down-this-year-th/?.tsrc=rss" target="_blank">Every Magnificent Seven Stock Is Down This Year. This One Is a Screaming Buy</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/390ee993-3b8e-3011-9287-1cde0325dcb7/dow-jones-dives%2C-oil-prices.html?.tsrc=rss" target="_blank">Dow Jones Dives, Oil Prices Hits $100 Amid Iran War; Tesla Looms</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -1068,12 +807,12 @@
         
         <div class="sector-group">
             <div class="sector-header" onclick="toggleSector(this)">
-                제약·바이오 <span class="count">(1) ▾</span>
+                제약·바이오 <span class="count">(1)</span>
             </div>
             <div class="sector-content" style="display: none;">
                 
         <div class="sector-briefing">
-            <p>제약·바이오 섹터 내 상위 1개 종목은 평균적으로 전일 대비 2.09% 하락하며 전체 시장 흐름 대비 특유의 산업 변동성을 보여주었습니다.</p>
+            <p>해당 섹터 종목들은 평균 <b>2.09% 하락</b>하며, 전체 시장 수익률 패턴과 대비되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p>
         </div>
         
             <div class="stock-item neg" onclick="toggleStock(event, this, 'LLY', 'NYSE:LLY')">
@@ -1086,29 +825,17 @@
                 </div>
                 <div class="stock-summary" id="summary-LLY">
                     <div class="summary-content">
-                        <p>Eli Lilly and Company (LLY)는 글로벌 제약·바이오 섹터 흐름에 편승하여 일일 기준 -2.09% 하락한 $878.24로 장을 마감했습니다. 펀더멘털과 수급 동향에 기반하여, 변동성 장세 속에서도 대형 시가총액 리더십을 검증받고 있습니다.</p>
+                        <p class="bot-analysis">LLY는 오늘 글로벌 제약·바이오 산업 사이클 속에서 전일 대비 <b>-2.09% 약세</b> 흐름을 보이며 마감되었습니다 ($ 878.24). 기술적·펀더멘털 양 측면에서 유의미한 모멘텀 구간에 진입한 것으로 분석됩니다.</p>
                         
                         <div class="addon-grid">
                             <div class="addon-col">
-                                <h3>실시간 차트 분석</h3>
+                                <h3 class="box-title">TECHNICAL CHART</h3>
                                 <div id="tvchart_LLY" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
-                                <h3>최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:LLY",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
+                                <h3 class="box-title">YAHOO FINANCE: LLY</h3>
+                                <div class="news-container">
+                                    <ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/healthcare/articles/eli-lilly-ebglyss-data-highlights-041708830.html?.tsrc=rss" target="_blank">Eli Lilly EBGLYSS Data Highlights Long Term AD Potential Beyond Obesity</a></li><li class="news-item"><a href="https://finance.yahoo.com/video/why-you-should-never-count-out-google-215424047.html?.tsrc=rss" target="_blank">Why you should 'never count out' Google</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/kailera-therapeutics-files-us-ipo-210348213.html?.tsrc=rss" target="_blank">Kailera Therapeutics files for US IPO</a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -1127,15 +854,13 @@
             const content = element.nextElementSibling;
             if (content.style.display === "none") {
                 content.style.display = "block";
-                element.classList.add('open');
             } else {
                 content.style.display = "none";
-                element.classList.remove('open');
             }
         }
 
         function toggleStock(event, element, ticker, tvSymbol) {
-            if (event.target.closest('.mini-chart') || event.target.closest('.tradingview-widget-container')) return; // Prevent collapse when interacting with widgets
+            if (event.target.closest('.mini-chart') || event.target.closest('.news-container')) return; 
             element.classList.toggle('expanded');
             
             if (element.classList.contains('expanded')) {
@@ -1150,10 +875,10 @@
                         "timezone": "America/New_York",
                         "theme": "dark",
                         "style": "1",
-                        "locale": "kr",
+                        "locale": "en",
                         "enable_publishing": false,
-                        "backgroundColor": "rgba(0,0,0,0)",
-                        "gridColor": "rgba(255, 255, 255, 0.02)",
+                        "backgroundColor": "#000000",
+                        "gridColor": "rgba(255, 255, 255, 0.05)",
                         "hide_top_toolbar": false,
                         "hide_legend": true,
                         "save_image": false,
