@@ -111,7 +111,7 @@
     <div class="container">
         <header>
             <h1>Wall Street Market Intelligence</h1>
-            <div class="date">2026-03-28 03:16 KST Update</div>
+            <div class="date">2026-03-28 03:17 KST Update</div>
         </header>
 
         <!-- [Feature 4] Sector Heatmap -->
@@ -227,7 +227,7 @@
             </div>
             <div class="sector-content" style="display: none;">
                 
-            <div class="stock-item neg" onclick="toggleStock(this, 'BRK.B', 'NYSE:BRK.B')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'BRK.B', 'NYSE:BRK.B')">
                 <div class="stock-header">
                     <span class="ticker">BRK.B</span>
                     <span class="details">
@@ -267,7 +267,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'BRK.A', 'NYSE:BRK.A')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'BRK.A', 'NYSE:BRK.A')">
                 <div class="stock-header">
                     <span class="ticker">BRK.A</span>
                     <span class="details">
@@ -307,127 +307,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PC', 'NYSE:JPM/PC')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PC</span>
-                    <span class="details">
-                        <span class="price">$24.86</span>
-                        <span class="change">-0.28%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PC">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.28% 하락한 $24.86로 장을 마감했습니다.</p>
-                        
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3>📊 실시간 차트</h3>
-                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3>📰 최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM/PC",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PK', 'NYSE:JPM/PK')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PK</span>
-                    <span class="details">
-                        <span class="price">$18.72</span>
-                        <span class="change">-0.69%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PK">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.69% 하락한 $18.72로 장을 마감했습니다.</p>
-                        
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3>📊 실시간 차트</h3>
-                                <div id="tvchart_JPM/PK" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3>📰 최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM/PK",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PL', 'NYSE:JPM/PL')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PL</span>
-                    <span class="details">
-                        <span class="price">$19.03</span>
-                        <span class="change">-0.99%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PL">
-                    <div class="summary-content">
-                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.99% 하락한 $19.03로 장을 마감했습니다.</p>
-                        
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3>📊 실시간 차트</h3>
-                                <div id="tvchart_JPM/PL" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3>📰 최신 뉴스 모아보기</h3>
-                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
-                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
-                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                                  {
-                                  "feedMode": "symbol",
-                                  "symbol": "NYSE:JPM/PL",
-                                  "colorTheme": "dark",
-                                  "isTransparent": true,
-                                  "displayMode": "regular",
-                                  "width": "100%",
-                                  "height": "100%",
-                                  "locale": "kr"
-                                  }
-                                  </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PM', 'NYSE:JPM/PM')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PM', 'NYSE:JPM/PM')">
                 <div class="stock-header">
                     <span class="ticker">JPM/PM</span>
                     <span class="details">
@@ -467,7 +347,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PJ', 'NYSE:JPM/PJ')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PJ', 'NYSE:JPM/PJ')">
                 <div class="stock-header">
                     <span class="ticker">JPM/PJ</span>
                     <span class="details">
@@ -507,7 +387,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PD', 'NYSE:JPM/PD')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PD', 'NYSE:JPM/PD')">
                 <div class="stock-header">
                     <span class="ticker">JPM/PD</span>
                     <span class="details">
@@ -547,6 +427,126 @@
                 </div>
             </div>
             
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM', 'NYSE:JPM')">
+                <div class="stock-header">
+                    <span class="ticker">JPM</span>
+                    <span class="details">
+                        <span class="price">$282.84</span>
+                        <span class="change">-3.02%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM">
+                    <div class="summary-content">
+                        <p>JP Morgan Chase & Co. (JPM)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -3.02% 하락한 $282.84로 장을 마감했습니다.</p>
+                        
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3>📊 실시간 차트</h3>
+                                <div id="tvchart_JPM" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3>📰 최신 뉴스 모아보기</h3>
+                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
+                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
+                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                                  {
+                                  "feedMode": "symbol",
+                                  "symbol": "NYSE:JPM",
+                                  "colorTheme": "dark",
+                                  "isTransparent": true,
+                                  "displayMode": "regular",
+                                  "width": "100%",
+                                  "height": "100%",
+                                  "locale": "kr"
+                                  }
+                                  </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PC</span>
+                    <span class="details">
+                        <span class="price">$24.86</span>
+                        <span class="change">-0.28%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PC">
+                    <div class="summary-content">
+                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.28% 하락한 $24.86로 장을 마감했습니다.</p>
+                        
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3>📊 실시간 차트</h3>
+                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3>📰 최신 뉴스 모아보기</h3>
+                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
+                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
+                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                                  {
+                                  "feedMode": "symbol",
+                                  "symbol": "NYSE:JPM/PC",
+                                  "colorTheme": "dark",
+                                  "isTransparent": true,
+                                  "displayMode": "regular",
+                                  "width": "100%",
+                                  "height": "100%",
+                                  "locale": "kr"
+                                  }
+                                  </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PL', 'NYSE:JPM/PL')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PL</span>
+                    <span class="details">
+                        <span class="price">$19.03</span>
+                        <span class="change">-0.99%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PL">
+                    <div class="summary-content">
+                        <p>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)는 글로벌 금융 섹터 흐름에 편승하여 일일 기준 -0.99% 하락한 $19.03로 장을 마감했습니다.</p>
+                        
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3>📊 실시간 차트</h3>
+                                <div id="tvchart_JPM/PL" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3>📰 최신 뉴스 모아보기</h3>
+                                <div class="tradingview-widget-container" style="height: 300px; width: 100%;">
+                                  <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
+                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                                  {
+                                  "feedMode": "symbol",
+                                  "symbol": "NYSE:JPM/PL",
+                                  "colorTheme": "dark",
+                                  "isTransparent": true,
+                                  "displayMode": "regular",
+                                  "width": "100%",
+                                  "height": "100%",
+                                  "locale": "kr"
+                                  }
+                                  </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             </div>
         </div>
         
@@ -556,7 +556,7 @@
             </div>
             <div class="sector-content" style="display: none;">
                 
-            <div class="stock-item neg" onclick="toggleStock(this, 'NVDA', 'NASDAQ:NVDA')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'NVDA', 'NASDAQ:NVDA')">
                 <div class="stock-header">
                     <span class="ticker">NVDA</span>
                     <span class="details">
@@ -596,7 +596,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'AAPL', 'NASDAQ:AAPL')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'AAPL', 'NASDAQ:AAPL')">
                 <div class="stock-header">
                     <span class="ticker">AAPL</span>
                     <span class="details">
@@ -636,7 +636,7 @@
                 </div>
             </div>
             
-            <div class="stock-item pos" onclick="toggleStock(this, 'TSM', 'NYSE:TSM')">
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'TSM', 'NYSE:TSM')">
                 <div class="stock-header">
                     <span class="ticker">TSM</span>
                     <span class="details">
@@ -676,7 +676,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'AVGO', 'NASDAQ:AVGO')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'AVGO', 'NASDAQ:AVGO')">
                 <div class="stock-header">
                     <span class="ticker">AVGO</span>
                     <span class="details">
@@ -725,7 +725,7 @@
             </div>
             <div class="sector-content" style="display: none;">
                 
-            <div class="stock-item neg" onclick="toggleStock(this, 'GOOGL', 'NASDAQ:GOOGL')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'GOOGL', 'NASDAQ:GOOGL')">
                 <div class="stock-header">
                     <span class="ticker">GOOGL</span>
                     <span class="details">
@@ -765,7 +765,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'GOOG', 'NASDAQ:GOOG')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'GOOG', 'NASDAQ:GOOG')">
                 <div class="stock-header">
                     <span class="ticker">GOOG</span>
                     <span class="details">
@@ -805,7 +805,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'MSFT', 'NASDAQ:MSFT')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'MSFT', 'NASDAQ:MSFT')">
                 <div class="stock-header">
                     <span class="ticker">MSFT</span>
                     <span class="details">
@@ -845,7 +845,7 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(this, 'META', 'NASDAQ:META')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'META', 'NASDAQ:META')">
                 <div class="stock-header">
                     <span class="ticker">META</span>
                     <span class="details">
@@ -894,7 +894,7 @@
             </div>
             <div class="sector-content" style="display: none;">
                 
-            <div class="stock-item neg" onclick="toggleStock(this, 'AMZN', 'NASDAQ:AMZN')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'AMZN', 'NASDAQ:AMZN')">
                 <div class="stock-header">
                     <span class="ticker">AMZN</span>
                     <span class="details">
@@ -934,7 +934,7 @@
                 </div>
             </div>
             
-            <div class="stock-item pos" onclick="toggleStock(this, 'WMT', 'NASDAQ:WMT')">
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'WMT', 'NASDAQ:WMT')">
                 <div class="stock-header">
                     <span class="ticker">WMT</span>
                     <span class="details">
@@ -983,7 +983,7 @@
             </div>
             <div class="sector-content" style="display: none;">
                 
-            <div class="stock-item neg" onclick="toggleStock(this, 'TSLA', 'NASDAQ:TSLA')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'TSLA', 'NASDAQ:TSLA')">
                 <div class="stock-header">
                     <span class="ticker">TSLA</span>
                     <span class="details">
@@ -1032,7 +1032,7 @@
             </div>
             <div class="sector-content" style="display: none;">
                 
-            <div class="stock-item neg" onclick="toggleStock(this, 'LLY', 'NYSE:LLY')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'LLY', 'NYSE:LLY')">
                 <div class="stock-header">
                     <span class="ticker">LLY</span>
                     <span class="details">
@@ -1090,7 +1090,7 @@
             }
         }
 
-        function toggleStock(element, ticker, tvSymbol) {
+        function toggleStock(event, element, ticker, tvSymbol) {
             if (event.target.closest('.mini-chart') || event.target.closest('.tradingview-widget-container')) return; // Prevent collapse when interacting with widgets
             element.classList.toggle('expanded');
             
