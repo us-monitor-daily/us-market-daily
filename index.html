@@ -4,304 +4,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Market Movers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Institutional Market Movers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #121418;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f0f2f5;
-            --accent-pos: #ff4b4b; /* Korean standard Red for UP */
-            --accent-neg: #3b82f6; /* Korean standard Blue for DOWN */
+            --bg-color: #0b0c10;
+            --surface-color: #1f2833;
+            --text-main: #c5c6c7;
+            --text-accent: #66fcf1;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-pos: #ff4b4b; 
+            --accent-neg: #3b82f6; 
         }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', -apple-system, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; }
         
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding: 20px;
+            padding: 30px 20px;
+            line-height: 1.5;
         }
         
-        .container { max-width: 500px; margin: 0 auto; }
+        .container { max-width: 600px; margin: 0 auto; }
         
-        header { text-align: center; margin-bottom: 25px; }
-        h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; background: linear-gradient(90deg, #fff, #a3b1c6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .date { font-size: 0.85rem; color: #8b949e; letter-spacing: 0.5px; }
+        header { margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        h1 { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: 0.5px; text-transform: uppercase; }
+        .date { font-size: 0.85rem; color: #888; margin-top: 5px; }
         
         .summary-section {
-            background: linear-gradient(135deg, rgba(40,45,55,0.8), rgba(20,25,30,0.8));
-            border-radius: 16px; padding: 20px; margin-bottom: 25px;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            background: var(--surface-color);
+            border-radius: 8px; padding: 20px; margin-bottom: 30px;
+            border-left: 4px solid var(--text-accent);
         }
-        .summary-section h2 { font-size: 1.15rem; margin-bottom: 15px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
-        .summary-list { list-style: none; }
-        .summary-list li { font-size: 0.95rem; margin-bottom: 10px; line-height: 1.5; color: #e1e4e8; background: rgba(0,0,0,0.25); padding: 12px 16px; border-radius: 10px; }
-        .summary-list li b { color: #fff; }
-        .tip-box { margin-top: 15px; font-size: 0.85rem; background: rgba(255, 215, 0, 0.08); padding: 14px; border-radius: 10px; color: #facc15; line-height: 1.5; border: 1px solid rgba(255, 215, 0, 0.2); word-break: keep-all; }
-        .tip-box b { color: #fde047; }
+        .summary-section h2 { font-size: 1rem; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .overview-text { font-size: 0.95rem; color: #a9a9a9; }
         
-        /* Grid Layout */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+        .sector-group {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
         }
         
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 16px 12px;
+        .sector-header {
+            padding: 16px 20px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            transition: transform 0.2s;
+            background: rgba(0,0,0,0.2);
+            transition: background 0.2s;
         }
         
-        .card:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); }
+        .sector-header:hover { background: rgba(0,0,0,0.4); }
+        .sector-header .count { font-size: 0.85rem; color: #888; font-weight: 400; }
         
-        .card-header { margin-bottom: 8px; }
-        .card-header .ticker { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.5px; }
+        .sector-content {
+            border-top: 1px solid var(--border-color);
+        }
         
-        .card-body { text-align: center; width: 100%; }
-        .card-body .price { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
-        .card-body .change { font-size: 0.95rem; font-weight: 800; padding: 6px 0; border-radius: 8px; width: 100%; display: block; }
+        .stock-item {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
         
-        /* Korean Standard Colors (Red UP, Blue DOWN) */
-        .pos .change { background-color: rgba(255, 75, 75, 0.15); color: var(--accent-pos); }
-        .neg .change { background-color: rgba(59, 130, 246, 0.15); color: var(--accent-neg); }
-        .neu .change { background-color: rgba(139, 148, 158, 0.15); color: #8b949e; }
+        .stock-item:last-child { border-bottom: none; }
+        .stock-item:hover { background: rgba(255,255,255,0.03); }
+        
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ticker { font-weight: 700; color: #fff; font-size: 1.05rem; width: 80px; }
+        .details { display: flex; align-items: center; gap: 15px; }
+        .price { font-size: 0.95rem; color: #bbb; }
+        .change { font-weight: 600; font-size: 0.95rem; text-align: right; width: 70px; }
+        
+        .pos .change { color: var(--accent-pos); }
+        .neg .change { color: var(--accent-neg); }
+        .neu .change { color: #888; }
+        
+        .stock-summary {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, margin-top 0.3s ease;
+        }
+        
+        .summary-content {
+            margin-top: 12px;
+            padding: 12px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #999;
+            border-left: 2px solid #555;
+        }
+        
+        .expanded .stock-summary {
+            max-height: 200px;
+        }
+        
+        /* Utility */
+        .open .count { transform: rotate(180deg); display: inline-block; transition: transform 0.3s; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>US Market Top 20</h1>
-            <div class="date">2026년 03월 27일 기준</div>
+            <div class="date">2026-03-27 21:07 KST Update</div>
         </header>
         
         
     <div class="summary-section">
-        <h2>🔥 오늘의 핵심 테마 요약</h2>
-        <ul class="summary-list">
-            <li>🚨 <b>빅테크 일제히 하락장</b> (기술주에 찬바람 쌩쌩)</li>
-            <li>📊 <b>종목 비중: 상승 2개 / 하락 18개</b></li>
-            <li>🏆 <b>오늘의 특징주</b>: 가장 크게 오른 종목은 <b>WMT (+0.58%)</b>, 제일 아픈 종목은 <b>META (-3.99%)</b></li>
-        </ul>
-        <div class="tip-box">
-            <span>💡 <b>ECO102 인사이트:</b> 하락 종목이 더 많습니다. 대형 기술주가 <b>동반 하락할 때</b>는 금리 인하 기대감이 꺾이거나(Discount Rate 상승), 전체 지수의 상승 동력이 소수 종목에 의존한 '쏠림장'의 부작용이 터진 것일 수 있어요! 🧊</span>
-        </div>
+        <h2>Professional Market Overview</h2>
+        <p class="overview-text">
+            금일 시가총액 상위 20개 종목 중 상승은 2종목, 하락은 18종목으로 집계되었습니다. 
+            대형 기술주를 중심으로 강한 매도세가 출회되며 지수 전반의 하방 압력이 가중되었습니다.
+        </p>
     </div>
     
         
-        <div class="cards-grid">
+        <div class="sectors-container">
             
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">NVDA</span>
+        <div class="sector-group">
+            <div class="sector-header" onclick="toggleSector(this)">
+                Finance <span class="count">(8) ▾</span>
             </div>
-            <div class="card-body">
-                <div class="price">$167.52</div>
-                <div class="change">-2.17%</div>
+            <div class="sector-content" style="display: none;">
+                
+            <div class="stock-item neg" onclick="toggleStock(this, 'BRK.A')">
+                <div class="stock-header">
+                    <span class="ticker">BRK.A</span>
+                    <span class="details">
+                        <span class="price">$703,699.99</span>
+                        <span class="change">-1.24%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-BRK.A">
+                    <div class="summary-content">
+                        Berkshire Hathaway Inc. (BRK.A)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -1.24% 하락한 $703,699.99에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">AAPL</span>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'BRK.B')">
+                <div class="stock-header">
+                    <span class="ticker">BRK.B</span>
+                    <span class="details">
+                        <span class="price">$468.49</span>
+                        <span class="change">-1.43%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-BRK.B">
+                    <div class="summary-content">
+                        Berkshire Hathaway Inc. New (BRK.B)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -1.43% 하락한 $468.49에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="price">$248.80</div>
-                <div class="change">-1.62%</div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PC')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PC</span>
+                    <span class="details">
+                        <span class="price">$24.86</span>
+                        <span class="change">-0.28%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PC">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.28% 하락한 $24.86에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">GOOGL</span>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PK')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PK</span>
+                    <span class="details">
+                        <span class="price">$18.72</span>
+                        <span class="change">-0.69%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PK">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.69% 하락한 $18.72에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="price">$274.34</div>
-                <div class="change">-2.34%</div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PM')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PM</span>
+                    <span class="details">
+                        <span class="price">$17.51</span>
+                        <span class="change">-0.85%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PM">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.85% 하락한 $17.51에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">GOOG</span>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PL')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PL</span>
+                    <span class="details">
+                        <span class="price">$19.03</span>
+                        <span class="change">-0.99%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PL">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.99% 하락한 $19.03에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="price">$273.76</div>
-                <div class="change">-2.49%</div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PD')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PD</span>
+                    <span class="details">
+                        <span class="price">$24.32</span>
+                        <span class="change">-0.53%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PD">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.53% 하락한 $24.32에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">MSFT</span>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'JPM/PJ')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PJ</span>
+                    <span class="details">
+                        <span class="price">$19.58</span>
+                        <span class="change">-0.61%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PJ">
+                    <div class="summary-content">
+                        J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)는 속한 Finance 섹터의 흐름 속에서 기일 대비 -0.61% 하락한 $19.58에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="price">$356.77</div>
-                <div class="change">-2.51%</div>
-            </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">AMZN</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$199.34</div>
-                <div class="change">-3.95%</div>
-            </div>
-        </div>
-        
-        <div class="card pos">
-            <div class="card-header">
-                <span class="ticker">TSM</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$326.74</div>
-                <div class="change">+0.19%</div>
-            </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">AVGO</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$300.68</div>
-                <div class="change">-2.82%</div>
-            </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">TSLA</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$361.83</div>
-                <div class="change">-2.76%</div>
-            </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">META</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$525.72</div>
-                <div class="change">-3.99%</div>
-            </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">BRK.A</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$703,699.99</div>
-                <div class="change">-1.24%</div>
-            </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">BRK.B</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$468.49</div>
-                <div class="change">-1.43%</div>
-            </div>
-        </div>
-        
-        <div class="card pos">
-            <div class="card-header">
-                <span class="ticker">WMT</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$122.89</div>
-                <div class="change">+0.58%</div>
-            </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">LLY</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$878.24</div>
-                <div class="change">-2.09%</div>
+            
             </div>
         </div>
         
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">JPM/PC</span>
+        <div class="sector-group">
+            <div class="sector-header" onclick="toggleSector(this)">
+                Electronic Technology <span class="count">(4) ▾</span>
             </div>
-            <div class="card-body">
-                <div class="price">$24.86</div>
-                <div class="change">-0.28%</div>
+            <div class="sector-content" style="display: none;">
+                
+            <div class="stock-item neg" onclick="toggleStock(this, 'NVDA')">
+                <div class="stock-header">
+                    <span class="ticker">NVDA</span>
+                    <span class="details">
+                        <span class="price">$167.52</span>
+                        <span class="change">-2.17%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-NVDA">
+                    <div class="summary-content">
+                        NVIDIA Corporation (NVDA)는 속한 Electronic Technology 섹터의 흐름 속에서 기일 대비 -2.17% 하락한 $167.52에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'AAPL')">
+                <div class="stock-header">
+                    <span class="ticker">AAPL</span>
+                    <span class="details">
+                        <span class="price">$248.80</span>
+                        <span class="change">-1.62%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-AAPL">
+                    <div class="summary-content">
+                        Apple Inc. (AAPL)는 속한 Electronic Technology 섹터의 흐름 속에서 기일 대비 -1.62% 하락한 $248.80에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item pos" onclick="toggleStock(this, 'TSM')">
+                <div class="stock-header">
+                    <span class="ticker">TSM</span>
+                    <span class="details">
+                        <span class="price">$326.74</span>
+                        <span class="change">+0.19%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-TSM">
+                    <div class="summary-content">
+                        Taiwan Semiconductor Manufacturing Company Ltd. (TSM)는 속한 Electronic Technology 섹터의 흐름 속에서 기일 대비 0.19% 상승한 $326.74에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'AVGO')">
+                <div class="stock-header">
+                    <span class="ticker">AVGO</span>
+                    <span class="details">
+                        <span class="price">$300.68</span>
+                        <span class="change">-2.82%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-AVGO">
+                    <div class="summary-content">
+                        Broadcom Inc. (AVGO)는 속한 Electronic Technology 섹터의 흐름 속에서 기일 대비 -2.82% 하락한 $300.68에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
             </div>
         </div>
         
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">JPM/PL</span>
+        <div class="sector-group">
+            <div class="sector-header" onclick="toggleSector(this)">
+                Technology Services <span class="count">(4) ▾</span>
             </div>
-            <div class="card-body">
-                <div class="price">$19.03</div>
-                <div class="change">-0.99%</div>
+            <div class="sector-content" style="display: none;">
+                
+            <div class="stock-item neg" onclick="toggleStock(this, 'GOOGL')">
+                <div class="stock-header">
+                    <span class="ticker">GOOGL</span>
+                    <span class="details">
+                        <span class="price">$274.34</span>
+                        <span class="change">-2.34%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-GOOGL">
+                    <div class="summary-content">
+                        Alphabet Inc. (GOOGL)는 속한 Technology Services 섹터의 흐름 속에서 기일 대비 -2.34% 하락한 $274.34에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'GOOG')">
+                <div class="stock-header">
+                    <span class="ticker">GOOG</span>
+                    <span class="details">
+                        <span class="price">$273.76</span>
+                        <span class="change">-2.49%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-GOOG">
+                    <div class="summary-content">
+                        Alphabet Inc. (GOOG)는 속한 Technology Services 섹터의 흐름 속에서 기일 대비 -2.49% 하락한 $273.76에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'MSFT')">
+                <div class="stock-header">
+                    <span class="ticker">MSFT</span>
+                    <span class="details">
+                        <span class="price">$356.77</span>
+                        <span class="change">-2.51%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-MSFT">
+                    <div class="summary-content">
+                        Microsoft Corporation (MSFT)는 속한 Technology Services 섹터의 흐름 속에서 기일 대비 -2.51% 하락한 $356.77에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(this, 'META')">
+                <div class="stock-header">
+                    <span class="ticker">META</span>
+                    <span class="details">
+                        <span class="price">$525.72</span>
+                        <span class="change">-3.99%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-META">
+                    <div class="summary-content">
+                        Meta Platforms, Inc. (META)는 속한 Technology Services 섹터의 흐름 속에서 기일 대비 -3.99% 하락한 $525.72에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
             </div>
         </div>
         
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">JPM/PK</span>
+        <div class="sector-group">
+            <div class="sector-header" onclick="toggleSector(this)">
+                Retail Trade <span class="count">(2) ▾</span>
             </div>
-            <div class="card-body">
-                <div class="price">$18.72</div>
-                <div class="change">-0.69%</div>
+            <div class="sector-content" style="display: none;">
+                
+            <div class="stock-item neg" onclick="toggleStock(this, 'AMZN')">
+                <div class="stock-header">
+                    <span class="ticker">AMZN</span>
+                    <span class="details">
+                        <span class="price">$199.34</span>
+                        <span class="change">-3.95%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-AMZN">
+                    <div class="summary-content">
+                        Amazon.com, Inc. (AMZN)는 속한 Retail Trade 섹터의 흐름 속에서 기일 대비 -3.95% 하락한 $199.34에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item pos" onclick="toggleStock(this, 'WMT')">
+                <div class="stock-header">
+                    <span class="ticker">WMT</span>
+                    <span class="details">
+                        <span class="price">$122.89</span>
+                        <span class="change">+0.58%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-WMT">
+                    <div class="summary-content">
+                        Walmart Inc. (WMT)는 속한 Retail Trade 섹터의 흐름 속에서 기일 대비 0.58% 상승한 $122.89에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
             </div>
         </div>
         
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">JPM/PD</span>
+        <div class="sector-group">
+            <div class="sector-header" onclick="toggleSector(this)">
+                Consumer Durables <span class="count">(1) ▾</span>
             </div>
-            <div class="card-body">
-                <div class="price">$24.32</div>
-                <div class="change">-0.53%</div>
+            <div class="sector-content" style="display: none;">
+                
+            <div class="stock-item neg" onclick="toggleStock(this, 'TSLA')">
+                <div class="stock-header">
+                    <span class="ticker">TSLA</span>
+                    <span class="details">
+                        <span class="price">$361.83</span>
+                        <span class="change">-2.76%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-TSLA">
+                    <div class="summary-content">
+                        Tesla, Inc. (TSLA)는 속한 Consumer Durables 섹터의 흐름 속에서 기일 대비 -2.76% 하락한 $361.83에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
+            </div>
+            
             </div>
         </div>
         
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">JPM/PJ</span>
+        <div class="sector-group">
+            <div class="sector-header" onclick="toggleSector(this)">
+                Health Technology <span class="count">(1) ▾</span>
             </div>
-            <div class="card-body">
-                <div class="price">$19.58</div>
-                <div class="change">-0.61%</div>
+            <div class="sector-content" style="display: none;">
+                
+            <div class="stock-item neg" onclick="toggleStock(this, 'LLY')">
+                <div class="stock-header">
+                    <span class="ticker">LLY</span>
+                    <span class="details">
+                        <span class="price">$878.24</span>
+                        <span class="change">-2.09%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-LLY">
+                    <div class="summary-content">
+                        Eli Lilly and Company (LLY)는 속한 Health Technology 섹터의 흐름 속에서 기일 대비 -2.09% 하락한 $878.24에 거래를 마쳤습니다. 대형 시가총액 수준을 유지하며 해당 섹터에서의 입지를 재확인했습니다.
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="card neg">
-            <div class="card-header">
-                <span class="ticker">JPM/PM</span>
-            </div>
-            <div class="card-body">
-                <div class="price">$17.51</div>
-                <div class="change">-0.85%</div>
+            
             </div>
         </div>
         
         </div>
     </div>
+    
+    <script>
+        function toggleSector(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                element.classList.add('open');
+            } else {
+                content.style.display = "none";
+                element.classList.remove('open');
+            }
+        }
+
+        function toggleStock(element, ticker) {
+            // prevent sector toggle if stock is clicked
+            event.stopPropagation();
+            element.classList.toggle('expanded');
+        }
+    </script>
 </body>
 </html>
     
