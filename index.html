@@ -45,6 +45,22 @@
         .sector-briefing p { font-size: 0.9rem; color: #999; line-height: 1.6; font-weight: 400; }
         .sector-briefing b { color: #ccc; font-weight: 600; }
         
+        .stock-item { padding: 20px 24px; border-bottom: 1px solid var(--border-color); cursor: pointer; }
+        .stock-item:hover { background: rgba(255,255,255,0.02); }
+        .stock-header { display: flex; justify-content: space-between; align-items: center; }
+        .ticker { font-weight: 700; color: #fff; font-size: 1.15rem; width: 90px; }
+        .details { display: flex; align-items: center; gap: 24px; }
+        .price { font-size: 1.05rem; color: var(--text-main); font-weight: 500; }
+        .change { font-weight: 600; font-size: 1.05rem; text-align: right; width: 80px; letter-spacing: 0.5px; }
+        .pos .change { color: var(--accent-pos); }
+        .neg .change { color: var(--accent-neg); }
+        .neu .change { color: var(--text-mute); }
+        
+        .stock-summary { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        .expanded .stock-summary { max-height: 1200px; }
+        .summary-content { margin-top: 24px; border-top: 1px dashed var(--border-color); padding-top: 24px; }
+        .bot-analysis { margin-bottom: 24px; font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: #b2b5be; padding-left: 16px; border-left: 2px solid #555; word-break: keep-all; }
+        
         .addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         @media (max-width: 768px) { .addon-grid { grid-template-columns: 1fr; } }
         .box-title { font-size: 0.85rem; font-weight: 600; color: #888; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
@@ -66,7 +82,7 @@
     <div class="container">
         <header>
             <h1>US Market Intelligence</h1>
-            <div class="date">2026-03-30 03:24 KST Update</div>
+            <div class="date">2026-03-30 14:42 KST Update</div>
         </header>
 
         <!-- Ticker Tape -->
@@ -94,10 +110,10 @@
             
     <div class="summary-section">
         <h2>거시 경제 요약 브리핑</h2>
-        <p class="overview-text">오늘 미국 증시 주도주 최상위 20개 종목의 변동성을 스캔한 결과, 상승 마감은 2개, 하락 마감은 18개로 집계되었습니다. 
-    M7 등 초대형 팹리스 및 소프트웨어 기술주를 관통하는 강력한 매도 우위가 지수 전반의 하방 압력을 주도하고 있습니다. 
-    독립 거래 세션 딥다이브 결과, <b>Walmart Inc.(WMT)</b>에 막대한 기관 매수세가 쏠리며 <b>0.58%</b> 급등, 당일 시장 수익률을 방어하는 핵심 기둥 역할을 수행했습니다. 
-    반면 <b>Meta Platforms, Inc.(META)</b>는 공매도 공격 또는 실망 매물 출회로 <b>-3.99%</b> 급락하며 중장기 투심을 저해하는 리스크 요인으로 부상했습니다.</p>
+        <p class="overview-text">오늘 미국 증시 주도주 최상위 20개 종목의 변동성을 스캔한 결과, 상승 마감은 9개, 하락 마감은 11개로 집계되었습니다. 
+    하락 종목이 과반을 기록하며 차익 실현 및 시장 관망 심리가 강하게 맞물리는 혼조세가 특징적입니다. 
+    독립 거래 세션 딥다이브 결과, <b>Meta Platforms, Inc.(META)</b>에 막대한 기관 매수세가 쏠리며 <b>2.26%</b> 급등, 당일 시장 수익률을 방어하는 핵심 기둥 역할을 수행했습니다. 
+    반면 <b>Taiwan Semiconductor Manufacturing Company Ltd.(TSM)</b>는 공매도 공격 또는 실망 매물 출회로 <b>-3.64%</b> 급락하며 중장기 투심을 저해하는 리스크 요인으로 부상했습니다.</p>
     </div>
     
             
@@ -107,9 +123,9 @@
             <span>Extreme Fear</span><span>Neutral</span><span>Extreme Greed</span>
         </div>
         <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative;">
-            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 74%; background: var(--accent-pos); transition: width 1s ease; box-shadow: 0 0 10px var(--accent-pos);"></div>
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 76%; background: var(--accent-pos); transition: width 1s ease; box-shadow: 0 0 10px var(--accent-pos);"></div>
         </div>
-        <div style="margin-top: 12px; font-size: 1.1rem; font-weight: 700; color: var(--accent-pos); text-align: center;">Greed (74/100)</div>
+        <div style="margin-top: 12px; font-size: 1.1rem; font-weight: 700; color: var(--accent-pos); text-align: center;">Greed (76/100)</div>
     </div>
     
             <div class="widget-box reveal">
@@ -127,7 +143,7 @@
         <div class="global-news-container widget-box reveal">
             <h2 style="padding: 16px 20px; font-size: 1.05rem; font-weight: 600; color: #fff; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border-color); margin: 0; text-transform: uppercase;">글로벌 핵심 경제 뉴스 (Yahoo Finance)</h2>
             <div style="padding: 16px 20px;">
-                <ul class="news-list"><li class="news-item"><a href="https://247wallst.com/investing/2026/03/29/why-conservative-investors-are-turning-to-aok-with-vix-at-the-93rd-percentile/?.tsrc=rss" target="_blank">Why Conservative Investors Are Turning to AOK With VIX at the 93rd Percentile</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/29/aor-has-returned-113-6-over-10-years-with-built-in-rebalancing-and-a-2-6-yield/?.tsrc=rss" target="_blank">AOR Has Returned 113.6% Over 10 Years With Built-In Rebalancing and a 2.6% Yield</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/28/spy-has-returned-217-over-10-years-but-its-top-3-holdings-now-control-the-outcome/?.tsrc=rss" target="_blank">SPY Has Returned 217% Over 10 Years, But Its Top 3 Holdings Now Control the Outcome</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/28/rspas-8-9-yield-hides-a-tax-problem-most-income-investors-never-see-coming/?.tsrc=rss" target="_blank">RSPA’s 8.9% Yield Hides a Tax Problem Most Income Investors Never See Coming</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/oef-returned-314-83-over-10-years-while-spy-managed-223-37/?.tsrc=rss" target="_blank">OEF Returned 314.83% Over 10 Years While SPY Managed 223.37%</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/pre-markets-down-again-ahead-143300300.html?.tsrc=rss" target="_blank">Pre-Markets Down Again Ahead of Weekend</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/market-minute-3-27-26-141500250.html?.tsrc=rss" target="_blank">Market Minute 3-27-26- Deadline Can Kick Earns Market Shrug</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131702047.html?.tsrc=rss" target="_blank">Exchange-Traded Funds, Equity Futures Lower Pre-Bell Friday as Investor Concerns Linger Amid Middle East Conflict</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/3-etfs-that-are-beating-the-market-right-now-and-none-of-them-are-the-ones-everyone-already-owns/?.tsrc=rss" target="_blank">3 ETFs That Are Beating the Market Right Now — and None of Them Are the Ones Everyone Already Owns</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/db34d9fc-5a53-31de-b8d3-e9ddd77856da/think-trump%27s-war-crash-isn%27t.html?.tsrc=rss" target="_blank">Think Trump's War Crash Isn't Bad Yet? 5 Big Stocks Implode 60%</a></li></ul>
+                <ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/m/2b09384f-18a7-3cab-8030-291b487552a4/this-options-spread-can-pay.html?.tsrc=rss" target="_blank">This Options Spread Can Pay Off Up To $5,200 If The Market Weakens</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/articles/pre-markets-attract-bargain-buyers-142200411.html?.tsrc=rss" target="_blank">Pre-Markets Attract Bargain Buyers Ahead of "Jobs Week"</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/30/the-low-volatility-promise-of-acwv-costs-investors-118-over-a-decade-compared-to-spy/?.tsrc=rss" target="_blank">The Low-Volatility Promise of ACWV Costs Investors 118% Over a Decade Compared to SPY</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-125115183.html?.tsrc=rss" target="_blank">Exchange-Traded Funds, Equity Futures Higher Pre-Bell Monday Ahead of Fresh Economic Data</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/30/acwis-18-3-run-beat-the-sp-500-but-the-10-year-story-is-more-complicated/?.tsrc=rss" target="_blank">ACWI’s 18.3% Run Beat the S&P 500, But the 10-Year Story Is More Complicated</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/6dc9d348-c9ed-3d1c-8869-91d3ad3c6e6b/3-stocks-turn-%2410%2C000-into.html?.tsrc=rss" target="_blank">3 Stocks Turn $10,000 Into $53,314 In 3 Months</a></li><li class="news-item"><a href="https://www.marketbeat.com/stock-ideas/russell-2000-stocks-too-early-or-finally-interesting/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss" target="_blank">Russell 2000 Stocks: Too Early or Finally Interesting?</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/29/why-conservative-investors-are-turning-to-aok-with-vix-at-the-93rd-percentile/?.tsrc=rss" target="_blank">Why Conservative Investors Are Turning to AOK With VIX at the 93rd Percentile</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/29/aor-has-returned-113-6-over-10-years-with-built-in-rebalancing-and-a-2-6-yield/?.tsrc=rss" target="_blank">AOR Has Returned 113.6% Over 10 Years With Built-In Rebalancing and a 2.6% Yield</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/28/spy-has-returned-217-over-10-years-but-its-top-3-holdings-now-control-the-outcome/?.tsrc=rss" target="_blank">SPY Has Returned 217% Over 10 Years, But Its Top 3 Holdings Now Control the Outcome</a></li></ul>
             </div>
         </div>
         <div class="safe-scroll-zone"></div>
@@ -158,7 +174,7 @@
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
               <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-              { "exchanges": [], "dataSource": "SPX500", "grouping": "sector", "blockSize": "market_cap_basic", "blockColor": "change", "locale": "en", "colorTheme": "dark", "hasTopBar": false, "isDataSetEnabled": false, "isZoomEnabled": false, "hasSymbolTooltip": true, "width": "100%", "height": "100%" }
+              { "exchanges": [], "dataSource": "SPX500", "grouping": "sector", "blockSize": "market_cap_basic", "blockColor": "change", "locale": "en", "colorTheme": "dark", "hasTopBar": true, "isDataSetEnabled": true, "isZoomEnabled": true, "hasSymbolTooltip": true, "width": "100%", "height": "100%" }
               </script>
             </div>
         </div>
@@ -185,85 +201,85 @@
                 금융 <span class="count">(8)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.12% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'BRK.B', 'NYSE:BRK.B')">
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>0.36% 상승</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'BRK.B', 'NYSE:BRK.B')">
                 <div class="stock-header">
                     <span class="ticker">BRK.B</span>
                     <span class="details">
-                        <span class="price">$468.49</span>
-                        <span class="change">-1.43%</span>
-                        <span class="premarket-badge pre-pos">Post +0.02%</span>
+                        <span class="price">$475.76</span>
+                        <span class="change">+1.55%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.34%</span>
                     </span>
                 </div>
-                <div class="stock-summary" id="summary-BRK.B">
+                <div class="stock-summary" id="summary-BRK_B">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Berkshire Hathaway Inc. New (BRK.B)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-1.43% 약세 조정</b>를 기록하며 <b>$468.49</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+1.55% 상승 돌파</b>를 기록하며 <b>$475.76</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 1.43%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 금융 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 1.55%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
                                 <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_BRK.B" class="mini-chart"></div>
+                                <div id="tvchart_BRK_B" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/m/f802ee4f-0326-39c9-a7d4-79c0595a07b9/berkshire-hathaway-just.html?.tsrc=rss" target="_blank">Berkshire Hathaway Just Notched an 8-Day Losing Streak. Is It a Good Time to Buy the Stock?</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/berkshire-just-ended-the-year-with-nearly-375-billion-in-cash-history-says-this-1-etf-still-wins/?.tsrc=rss" target="_blank">Berkshire Just Ended the Year With Nearly $375 Billion in Cash. History Says This 1 ETF Still Wins.</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/cef8939b-90cc-34ba-af62-df2941aeb045/occidental-ceo%E2%80%99s-tenure-may.html?.tsrc=rss" target="_blank">Occidental CEO’s Tenure May Be Ending. It Hasn’t Been Good for the Stock.</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://uk.finance.yahoo.com/news/oil-stocks-prices-crude-iran-middle-east-130741431.html?.tsrc=rss" target="_blank">Top oil and energy stocks to watch as crude swings on Iran war</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/f802ee4f-0326-39c9-a7d4-79c0595a07b9/berkshire-hathaway-just.html?.tsrc=rss" target="_blank">Berkshire Hathaway Just Notched an 8-Day Losing Streak. Is It a Good Time to Buy the Stock?</a></li><li class="news-item"><a href="https://www.marketbeat.com/originals/financials-are-down-big-this-year-but-xlf-is-looking-like-a-buy-low-opportunity/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss" target="_blank">Financials Are Down Big This Year, but XLF Is Looking Like a Buy-Low Opportunity</a></li></ul></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'BRK.A', 'NYSE:BRK.A')">
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'BRK.A', 'NYSE:BRK.A')">
                 <div class="stock-header">
                     <span class="ticker">BRK.A</span>
                     <span class="details">
-                        <span class="price">$703,699.99</span>
-                        <span class="change">-1.24%</span>
+                        <span class="price">$713,471.13</span>
+                        <span class="change">+1.39%</span>
                         
                     </span>
                 </div>
-                <div class="stock-summary" id="summary-BRK.A">
+                <div class="stock-summary" id="summary-BRK_A">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Berkshire Hathaway Inc. (BRK.A)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-1.24% 약세 조정</b>를 기록하며 <b>$703,699.99</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+1.39% 상승 돌파</b>를 기록하며 <b>$713,471.13</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 1.24%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 금융 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 1.39%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
                                 <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_BRK.A" class="mini-chart"></div>
+                                <div id="tvchart_BRK_A" class="mini-chart"></div>
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/m/f802ee4f-0326-39c9-a7d4-79c0595a07b9/berkshire-hathaway-just.html?.tsrc=rss" target="_blank">Berkshire Hathaway Just Notched an 8-Day Losing Streak. Is It a Good Time to Buy the Stock?</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/berkshire-just-ended-the-year-with-nearly-375-billion-in-cash-history-says-this-1-etf-still-wins/?.tsrc=rss" target="_blank">Berkshire Just Ended the Year With Nearly $375 Billion in Cash. History Says This 1 ETF Still Wins.</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/cef8939b-90cc-34ba-af62-df2941aeb045/occidental-ceo%E2%80%99s-tenure-may.html?.tsrc=rss" target="_blank">Occidental CEO’s Tenure May Be Ending. It Hasn’t Been Good for the Stock.</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://uk.finance.yahoo.com/news/oil-stocks-prices-crude-iran-middle-east-130741431.html?.tsrc=rss" target="_blank">Top oil and energy stocks to watch as crude swings on Iran war</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/f802ee4f-0326-39c9-a7d4-79c0595a07b9/berkshire-hathaway-just.html?.tsrc=rss" target="_blank">Berkshire Hathaway Just Notched an 8-Day Losing Streak. Is It a Good Time to Buy the Stock?</a></li><li class="news-item"><a href="https://www.marketbeat.com/originals/financials-are-down-big-this-year-but-xlf-is-looking-like-a-buy-low-opportunity/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss" target="_blank">Financials Are Down Big This Year, but XLF Is Looking Like a Buy-Low Opportunity</a></li></ul></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM', 'NYSE:JPM')">
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'JPM', 'NYSE:JPM')">
                 <div class="stock-header">
                     <span class="ticker">JPM</span>
                     <span class="details">
-                        <span class="price">$282.84</span>
-                        <span class="change">-3.02%</span>
-                        <span class="premarket-badge pre-neg">Post -0.08%</span>
+                        <span class="price">$284.33</span>
+                        <span class="change">+0.53%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.63%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-JPM">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>JP Morgan Chase & Co. (JPM)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-3.02% 약세 조정</b>를 기록하며 <b>$282.84</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+0.53% 상승 돌파</b>를 기록하며 <b>$284.33</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 3.02%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 금융 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 0.53%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -272,29 +288,60 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/ita-unibanco-bovespa-itub4-narrative-060631941.html?.tsrc=rss" target="_blank">How Itaú Unibanco (BOVESPA:ITUB4) Narrative Is Shifting With JPMorgan’s Refined Valuation Targets</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/onemain-holdings-omf-narrative-shifting-060450518.html?.tsrc=rss" target="_blank">How The OneMain Holdings (OMF) Narrative Is Shifting With Mixed Targets And Legal Risks</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/commodities/articles/investor-unease-builds-entering-war-193125656.html?.tsrc=rss" target="_blank">Stocks Drop, Oil Up on Fears of Widening Iran War: Markets Wrap</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.northjersey.com/story/news/business/2026/03/30/nj-bank-layoffs-jpmorgan-chase-ubs/89384124007/?.tsrc=rss" target="_blank">Hundreds of employees expected to be laid off at these NJ banks</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/jpmorgan-faces-pushback-7-2-163137543.html?.tsrc=rss" target="_blank">JPMorgan Faces Pushback on $7.2 Billion Sealed Air Debt Deal</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/jpmorgan-chase-co-jpm-could-154503178.html?.tsrc=rss" target="_blank">JPMorgan Chase & Co. (JPM) Could Be a Great Choice</a></li></ul></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PK', 'NYSE:JPM/PK')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PK</span>
+                    <span class="details">
+                        <span class="price">$18.68</span>
+                        <span class="change">-0.21%</span>
+                        
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PK">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.21% 약세 조정</b>를 기록하며 <b>$18.68</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.21%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PK" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
                 <div class="stock-header">
                     <span class="ticker">JPM/PC</span>
                     <span class="details">
-                        <span class="price">$24.86</span>
-                        <span class="change">-0.28%</span>
-                        <span class="premarket-badge pre-neg">Pre -0.32%</span>
+                        <span class="price">$24.89</span>
+                        <span class="change">+0.12%</span>
+                        
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-JPM/PC">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.28% 약세 조정</b>를 기록하며 <b>$24.86</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+0.12% 상승 돌파</b>를 기록하며 <b>$24.89</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.28%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 금융 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 0.12%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -314,8 +361,8 @@
                 <div class="stock-header">
                     <span class="ticker">JPM/PJ</span>
                     <span class="details">
-                        <span class="price">$19.58</span>
-                        <span class="change">-0.61%</span>
+                        <span class="price">$19.51</span>
+                        <span class="change">-0.36%</span>
                         
                     </span>
                 </div>
@@ -323,9 +370,9 @@
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.61% 약세 조정</b>를 기록하며 <b>$19.58</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.36% 약세 조정</b>를 기록하며 <b>$19.51</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.61%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.36%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -345,18 +392,18 @@
                 <div class="stock-header">
                     <span class="ticker">JPM/PM</span>
                     <span class="details">
-                        <span class="price">$17.51</span>
-                        <span class="change">-0.85%</span>
-                        <span class="premarket-badge pre-pos">Post +1.64%</span>
+                        <span class="price">$17.50</span>
+                        <span class="change">-0.06%</span>
+                        
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-JPM/PM">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.85% 약세 조정</b>를 기록하며 <b>$17.51</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.06% 약세 조정</b>를 기록하며 <b>$17.50</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.85%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.06%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -372,43 +419,12 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PD', 'NYSE:JPM/PD')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PD</span>
-                    <span class="details">
-                        <span class="price">$24.32</span>
-                        <span class="change">-0.53%</span>
-                        
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PD">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.53% 약세 조정</b>를 기록하며 <b>$24.32</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.53%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PD" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PL', 'NYSE:JPM/PL')">
                 <div class="stock-header">
                     <span class="ticker">JPM/PL</span>
                     <span class="details">
-                        <span class="price">$19.03</span>
-                        <span class="change">-0.99%</span>
+                        <span class="price">$19.02</span>
+                        <span class="change">-0.08%</span>
                         
                     </span>
                 </div>
@@ -416,9 +432,9 @@
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL (JPM/PL)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.99% 약세 조정</b>를 기록하며 <b>$19.03</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.08% 약세 조정</b>를 기록하며 <b>$19.02</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.99%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.08%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -442,23 +458,23 @@
                 전자·반도체 <span class="count">(4)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.60% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>2.14% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
             <div class="stock-item neg" onclick="toggleStock(event, this, 'NVDA', 'NASDAQ:NVDA')">
                 <div class="stock-header">
                     <span class="ticker">NVDA</span>
                     <span class="details">
-                        <span class="price">$167.52</span>
-                        <span class="change">-2.17%</span>
-                        <span class="premarket-badge pre-neg">Post -0.55%</span>
+                        <span class="price">$165.81</span>
+                        <span class="change">-1.02%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.74%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-NVDA">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>NVIDIA Corporation (NVDA)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 전자·반도체 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-2.17% 약세 조정</b>를 기록하며 <b>$167.52</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 전자·반도체 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-1.02% 약세 조정</b>를 기록하며 <b>$165.81</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 전자·반도체 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 2.17%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 전자·반도체 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 1.02%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -467,7 +483,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/retirement/2026/03/30/how-to-appeal-a-social-security-disability-denial/?.tsrc=rss" target="_blank">How to Appeal a Social Security Disability Denial Step-by-Step</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/30/4-etfs-to-put-on-your-watch-list-before-april-2026/?.tsrc=rss" target="_blank">4 ETFs to Put on Your Watch List Before April 2026</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/frances-mistral-raises-830-million-060341046.html?.tsrc=rss" target="_blank">France's Mistral raises $830 million in debt for AI data centre build-up</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://247wallst.com/investing/2026/03/30/this-1-tech-stock-is-worth-buying-hand-over-fist-even-in-this-environment/?.tsrc=rss" target="_blank">This 1 Tech Stock is Worth Buying Hand-Over-Fist, Even in This Environment</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/30/space-stocks-surge-time-to-buy-ast-and-rocket-lab/?.tsrc=rss" target="_blank">The Space Sector Is Surging. Should You Buy AST SpaceMobile and Rocket Lab?</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/30/could-super-micro-computers-troubles-sink-nvidias/?.tsrc=rss" target="_blank">Could Super Micro Computer's Troubles Sink Nvidia's Stock?</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -478,18 +494,18 @@
                 <div class="stock-header">
                     <span class="ticker">AAPL</span>
                     <span class="details">
-                        <span class="price">$248.80</span>
-                        <span class="change">-1.62%</span>
-                        <span class="premarket-badge pre-neg">Post -0.62%</span>
+                        <span class="price">$246.56</span>
+                        <span class="change">-0.9%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.5%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-AAPL">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Apple Inc. (AAPL)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 전자·반도체 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-1.62% 약세 조정</b>를 기록하며 <b>$248.80</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 전자·반도체 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.9% 약세 조정</b>를 기록하며 <b>$246.56</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 전자·반도체 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 1.62%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 전자·반도체 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.9%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -498,29 +514,29 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/prediction-apple-will-be-the-worst-magnificent-sev/?.tsrc=rss" target="_blank">Prediction: Apple Will Be the Worst "Magnificent Seven" Stock to Own Between Now and 2030</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-232032970.html?.tsrc=rss" target="_blank">Is Taiwan Semiconductor Manufacturing Company Limited (TSM) A Good Stock To Buy Now?</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/apple-inc-aapl-siri-powerful-201501407.html?.tsrc=rss" target="_blank">Apple Inc.’s (AAPL) Siri to Get Powerful AI Features and a Standalone App</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/qualcomm-call-feels-warning-171804275.html?.tsrc=rss" target="_blank">This Qualcomm Call Feels Like A Warning</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/iphone-demand-holds-strong-china-160532144.html?.tsrc=rss" target="_blank">iPhone Demand Holds Strong in China Despite Market Slump</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/30/goldman-sachs-initiates-qualcomm-at-neutral-with-a-135-price-target/?.tsrc=rss" target="_blank">Goldman Sachs Initiates Qualcomm at Neutral With a $135 Price Target</a></li></ul></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="stock-item pos" onclick="toggleStock(event, this, 'TSM', 'NYSE:TSM')">
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'TSM', 'NYSE:TSM')">
                 <div class="stock-header">
                     <span class="ticker">TSM</span>
                     <span class="details">
-                        <span class="price">$326.74</span>
-                        <span class="change">+0.19%</span>
-                        <span class="premarket-badge pre-neg">Post -0.66%</span>
+                        <span class="price">$314.86</span>
+                        <span class="change">-3.64%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.2%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-TSM">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Taiwan Semiconductor Manufacturing Company Ltd. (TSM)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 전자·반도체 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+0.19% 상승 돌파</b>를 기록하며 <b>$326.74</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 전자·반도체 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-3.64% 약세 조정</b>를 기록하며 <b>$314.86</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 전자·반도체 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 0.19%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 전자·반도체 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 3.64%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -529,7 +545,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-232032970.html?.tsrc=rss" target="_blank">Is Taiwan Semiconductor Manufacturing Company Limited (TSM) A Good Stock To Buy Now?</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/advanced-micro-devices-amd-samsung-202236957.html?.tsrc=rss" target="_blank">Advanced Micro Devices (AMD) and Samsung Expand Their Partnership for Memory Chip Supplies</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/micron-vs-taiwan-semiconductor-manufacturing-which/?.tsrc=rss" target="_blank">Micron vs Taiwan Semiconductor Manufacturing: Which AI Chipmaker Is the Better Buy Right Now?</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/tsmc-2nm-ramp-ai-demand-140547329.html?.tsrc=rss" target="_blank">TSMC 2nm Ramp And AI Demand Reframe Growth And Valuation Narrative</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/strong-demand-lifted-taiwan-semiconductor-130106361.html?.tsrc=rss" target="_blank">Strong Demand Lifted Taiwan Semiconductor Manufacturing Company Limited (TSM) Higher in Q4</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-co-tsm-125604873.html?.tsrc=rss" target="_blank">Taiwan Semiconductor Manufacturing Co. (TSM) is Benefiting from Strong Underlying Business Growth</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -540,18 +556,18 @@
                 <div class="stock-header">
                     <span class="ticker">AVGO</span>
                     <span class="details">
-                        <span class="price">$300.68</span>
-                        <span class="change">-2.82%</span>
-                        <span class="premarket-badge pre-neg">Post -0.79%</span>
+                        <span class="price">$291.63</span>
+                        <span class="change">-3.01%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.07%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-AVGO">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Broadcom Inc. (AVGO)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 전자·반도체 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-2.82% 약세 조정</b>를 기록하며 <b>$300.68</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 전자·반도체 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-3.01% 약세 조정</b>를 기록하며 <b>$291.63</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 전자·반도체 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 2.82%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 전자·반도체 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 3.01%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -560,7 +576,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/alphabet-newest-ai-advantage-buy-stock/?.tsrc=rss" target="_blank">Alphabet Just Introduced Its Newest AI Advantage, and It's Another Reason to Buy the Stock</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/broadcom-inc-avgo-introduces-symantec-202010172.html?.tsrc=rss" target="_blank">Broadcom Inc. (AVGO) Introduces Its Symantec CBX Platform</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/cathie-wood-going-cold-big-133122912.html?.tsrc=rss" target="_blank">Cathie Wood Going Cold On Big Tech? Ark Sells Nvidia, AMD, Meta And Google Stock — AI Darlings Get The Dump</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/m/f45fde7d-fc04-3ceb-bf8d-29a3fb75a68d/marvell-stock-is-ready-for.html?.tsrc=rss" target="_blank">Marvell Stock Is Ready for Agentic AI. Wall Street May Miss It.</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/ad72ce9a-4680-320e-8f41-bd784be31037/nvidia-chips-are-going-into.html?.tsrc=rss" target="_blank">Nvidia Chips Are Going Into New Data Centers—and Space</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/30/marvell-vs-broadcom-which-custom-artificial-intell/?.tsrc=rss" target="_blank">Marvell vs. Broadcom: Which Custom Artificial Intelligence (AI) Chip Stock Has More Upside in 2026?</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -575,23 +591,23 @@
                 IT·소프트웨어 <span class="count">(4)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>2.83% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>0.50% 상승</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
             <div class="stock-item neg" onclick="toggleStock(event, this, 'GOOGL', 'NASDAQ:GOOGL')">
                 <div class="stock-header">
                     <span class="ticker">GOOGL</span>
                     <span class="details">
-                        <span class="price">$274.34</span>
-                        <span class="change">-2.34%</span>
-                        <span class="premarket-badge pre-neg">Post -0.63%</span>
+                        <span class="price">$273.51</span>
+                        <span class="change">-0.3%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.83%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-GOOGL">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Alphabet Inc. (GOOGL)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 IT·소프트웨어 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-2.34% 약세 조정</b>를 기록하며 <b>$274.34</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 IT·소프트웨어 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.3% 약세 조정</b>를 기록하며 <b>$273.51</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 IT·소프트웨어 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 2.34%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 IT·소프트웨어 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.3%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -600,7 +616,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.thestreet.com/investing/wall-street-didnt-like-what-google-just-revealed?.tsrc=rss" target="_blank">Wall Street didn’t like what Google just revealed</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/is-now-a-good-time-to-buy-microsoft-stock/?.tsrc=rss" target="_blank">Is Now a Good Time to Buy Microsoft Stock?</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/alphabet-newest-ai-advantage-buy-stock/?.tsrc=rss" target="_blank">Alphabet Just Introduced Its Newest AI Advantage, and It's Another Reason to Buy the Stock</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/more-half-us-says-ai-173956932.html?.tsrc=rss" target="_blank">More Than Half of US Says AI Likely to Harm Them, Poll Finds</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/f2e1728b-d7d1-3d29-afb7-950e6969ef0c/memory-chip-pricing-strength.html?.tsrc=rss" target="_blank">Memory Chip Pricing Strength Likely To Continue Into 2027</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/paypal-expands-venmo-become-global-145600826.html?.tsrc=rss" target="_blank">PayPal Expands Venmo: Will It Become a Global Commerce Engine?</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -611,18 +627,18 @@
                 <div class="stock-header">
                     <span class="ticker">GOOG</span>
                     <span class="details">
-                        <span class="price">$273.76</span>
-                        <span class="change">-2.49%</span>
-                        <span class="premarket-badge pre-neg">Post -0.55%</span>
+                        <span class="price">$272.76</span>
+                        <span class="change">-0.37%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.69%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-GOOG">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Alphabet Inc. (GOOG)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 IT·소프트웨어 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-2.49% 약세 조정</b>를 기록하며 <b>$273.76</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 IT·소프트웨어 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.37% 약세 조정</b>를 기록하며 <b>$272.76</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 IT·소프트웨어 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 2.49%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 IT·소프트웨어 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.37%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -631,29 +647,29 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.thestreet.com/investing/wall-street-didnt-like-what-google-just-revealed?.tsrc=rss" target="_blank">Wall Street didn’t like what Google just revealed</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/is-now-a-good-time-to-buy-microsoft-stock/?.tsrc=rss" target="_blank">Is Now a Good Time to Buy Microsoft Stock?</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/alphabet-newest-ai-advantage-buy-stock/?.tsrc=rss" target="_blank">Alphabet Just Introduced Its Newest AI Advantage, and It's Another Reason to Buy the Stock</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/more-half-us-says-ai-173956932.html?.tsrc=rss" target="_blank">More Than Half of US Says AI Likely to Harm Them, Poll Finds</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/f2e1728b-d7d1-3d29-afb7-950e6969ef0c/memory-chip-pricing-strength.html?.tsrc=rss" target="_blank">Memory Chip Pricing Strength Likely To Continue Into 2027</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/paypal-expands-venmo-become-global-145600826.html?.tsrc=rss" target="_blank">PayPal Expands Venmo: Will It Become a Global Commerce Engine?</a></li></ul></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'MSFT', 'NASDAQ:MSFT')">
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'MSFT', 'NASDAQ:MSFT')">
                 <div class="stock-header">
                     <span class="ticker">MSFT</span>
                     <span class="details">
-                        <span class="price">$356.77</span>
-                        <span class="change">-2.51%</span>
-                        <span class="premarket-badge pre-neg">Post -0.17%</span>
+                        <span class="price">$358.31</span>
+                        <span class="change">+0.43%</span>
+                        <span class="premarket-badge pre-pos">Pre +1.45%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-MSFT">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Microsoft Corporation (MSFT)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 IT·소프트웨어 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-2.51% 약세 조정</b>를 기록하며 <b>$356.77</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 IT·소프트웨어 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+0.43% 상승 돌파</b>를 기록하며 <b>$358.31</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 IT·소프트웨어 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 2.51%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 IT·소프트웨어 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 0.43%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -662,29 +678,29 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/frances-mistral-raises-830-million-060341046.html?.tsrc=rss" target="_blank">France's Mistral raises $830 million in debt for AI data centre build-up</a></li><li class="news-item"><a href="https://www.thestreet.com/entertainment/microsofts-bold-game-pass-rethink-resets-the-rule-for-gaming?.tsrc=rss" target="_blank">Microsoft’s bold Game Pass rethink resets the rule for gaming</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/is-now-a-good-time-to-buy-microsoft-stock/?.tsrc=rss" target="_blank">Is Now a Good Time to Buy Microsoft Stock?</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/orderfox-schweiz-ag-introduces-gieni-183500214.html?.tsrc=rss" target="_blank">Orderfox Schweiz AG Introduces Gieni ABX in collaboration with Microsoft: A Frontier AI Solution That Executes Work to Completion</a></li><li class="news-item"><a href="https://finance.yahoo.com/news/microsoft-unveils-critique-sharpen-ai-183036212.html?.tsrc=rss" target="_blank">Microsoft Unveils Critique to Sharpen AI Research</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/more-half-us-says-ai-173956932.html?.tsrc=rss" target="_blank">More Than Half of US Says AI Likely to Harm Them, Poll Finds</a></li></ul></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'META', 'NASDAQ:META')">
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'META', 'NASDAQ:META')">
                 <div class="stock-header">
                     <span class="ticker">META</span>
                     <span class="details">
-                        <span class="price">$525.72</span>
-                        <span class="change">-3.99%</span>
-                        <span class="premarket-badge pre-neg">Post -1.07%</span>
+                        <span class="price">$537.61</span>
+                        <span class="change">+2.26%</span>
+                        <span class="premarket-badge pre-pos">Pre +2.03%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-META">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Meta Platforms, Inc. (META)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 IT·소프트웨어 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-3.99% 약세 조정</b>를 기록하며 <b>$525.72</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 IT·소프트웨어 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+2.26% 상승 돌파</b>를 기록하며 <b>$537.61</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 IT·소프트웨어 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 3.99%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 IT·소프트웨어 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 2.26%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -693,7 +709,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/meta-just-made-a-nuclear-power-bet-worth-66-gigawa/?.tsrc=rss" target="_blank">Meta Just Made a Nuclear Power Bet Worth 6.6 Gigawatts, and These 2 Stocks Could Benefit Most</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/meta-platforms-inc-meta-stock-234559941.html?.tsrc=rss" target="_blank">Is Meta Platforms, Inc. (META) Stock A Good Buy?</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/meta-verdicts-target-youth-engagement-230534885.html?.tsrc=rss" target="_blank">Meta Verdicts Target Youth Engagement Design And Add New Legal Risks</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/m/3bab7cff-fd95-377d-97fc-80f478de7393/meta-is-a-%E2%80%98top-pick%E2%80%99-at.html?.tsrc=rss" target="_blank">Meta Is a ‘Top Pick’ at Morgan Stanley. Why Wall Street Still Loves the Struggling Stock.</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/more-half-us-says-ai-173956932.html?.tsrc=rss" target="_blank">More Than Half of US Says AI Likely to Harm Them, Poll Finds</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/meta-faces-fallout-courtroom-losses-170343267.html?.tsrc=rss" target="_blank">Meta Faces Fallout From Courtroom Losses</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -708,23 +724,23 @@
                 소매·유통 <span class="count">(2)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.69% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'AMZN', 'NASDAQ:AMZN')">
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>0.98% 상승</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'AMZN', 'NASDAQ:AMZN')">
                 <div class="stock-header">
                     <span class="ticker">AMZN</span>
                     <span class="details">
-                        <span class="price">$199.34</span>
-                        <span class="change">-3.95%</span>
-                        <span class="premarket-badge pre-neg">Post -0.46%</span>
+                        <span class="price">$201.04</span>
+                        <span class="change">+0.85%</span>
+                        <span class="premarket-badge pre-pos">Pre +1.11%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-AMZN">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Amazon.com, Inc. (AMZN)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 소매·유통 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-3.95% 약세 조정</b>를 기록하며 <b>$199.34</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 소매·유통 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+0.85% 상승 돌파</b>를 기록하며 <b>$201.04</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 소매·유통 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 3.95%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 소매·유통 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 0.85%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -733,7 +749,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/amazon-court-win-puts-focus-070527782.html?.tsrc=rss" target="_blank">Amazon Court Win Puts Focus On Control Of AI Shopping Traffic</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/energy/articles/tgs-announces-aws-preferred-cloud-050000020.html?.tsrc=rss" target="_blank">TGS Announces AWS as its Preferred Cloud Provider</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/amazon-zoox-building-momentum-but-not-business/?.tsrc=rss" target="_blank">Amazon's Zoox Is Building Momentum -- but Not a Business (Yet)</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/ai-shopping-shift-puts-amazon-182012788.html?.tsrc=rss" target="_blank">AI Shopping Shift Puts Amazon, Walmart in Focus</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/persona-ai-announces-brian-davis-174700885.html?.tsrc=rss" target="_blank">Persona AI Announces Brian Davis as Head of Global Manufacturing</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/905d7fa9-c2e1-35ed-bad2-3f12b77e9c4c/stock-market-today%3A-dow-up-as.html?.tsrc=rss" target="_blank">Stock Market Today: Dow Up As Powell Says This; Palo Alto Surges After AI Dive (Live Coverage)</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -744,18 +760,18 @@
                 <div class="stock-header">
                     <span class="ticker">WMT</span>
                     <span class="details">
-                        <span class="price">$122.89</span>
-                        <span class="change">+0.58%</span>
-                        <span class="premarket-badge pre-neg">Post -0.23%</span>
+                        <span class="price">$124.24</span>
+                        <span class="change">+1.1%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.83%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-WMT">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Walmart Inc. (WMT)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 소매·유통 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+0.58% 상승 돌파</b>를 기록하며 <b>$122.89</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 소매·유통 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+1.1% 상승 돌파</b>를 기록하며 <b>$124.24</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 소매·유통 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 0.58%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 소매·유통 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 1.1%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -764,7 +780,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/is-it-too-late-to-buy-walmart/?.tsrc=rss" target="_blank">Is It Too Late to Buy Walmart?</a></li><li class="news-item"><a href="https://finance.yahoo.com/economy/articles/u-labor-market-eyes-modest-235909293.html?.tsrc=rss" target="_blank">U.S. labor market eyes modest recovery in March following February payroll slump</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/28/this-retail-giant-is-trading-for-half-the-price-of/?.tsrc=rss" target="_blank">This Retail Giant Is Trading for Half the Price of Walmart and Nearly One-Third the Price of Costco, but Growing 3 Times as Fast</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/ai-shopping-shift-puts-amazon-182012788.html?.tsrc=rss" target="_blank">AI Shopping Shift Puts Amazon, Walmart in Focus</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/walmart-mexico-expands-strategic-partnership-165000942.html?.tsrc=rss" target="_blank">Walmart Mexico Expands Strategic Partnership with Vusion to Deploy Connected Store Platform Across Express Stores and Supercenters</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/30/costcos-amazing-success/?.tsrc=rss" target="_blank">Costco’s Amazing Success</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -779,23 +795,23 @@
                 소비재(내구재) <span class="count">(1)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>2.76% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.73% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
             <div class="stock-item neg" onclick="toggleStock(event, this, 'TSLA', 'NASDAQ:TSLA')">
                 <div class="stock-header">
                     <span class="ticker">TSLA</span>
                     <span class="details">
-                        <span class="price">$361.83</span>
-                        <span class="change">-2.76%</span>
-                        <span class="premarket-badge pre-neg">Post -0.37%</span>
+                        <span class="price">$355.58</span>
+                        <span class="change">-1.73%</span>
+                        <span class="premarket-badge pre-pos">Pre +1.15%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-TSLA">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Tesla, Inc. (TSLA)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 소비재(내구재) 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-2.76% 약세 조정</b>를 기록하며 <b>$361.83</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 소비재(내구재) 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-1.73% 약세 조정</b>를 기록하며 <b>$355.58</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 소비재(내구재) 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 2.76%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 소비재(내구재) 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 1.73%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -804,7 +820,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/technology/articles/tesla-semi-million-mile-battery-030718330.html?.tsrc=rss" target="_blank">Tesla Semi Million Mile Battery Puts Freight Economics In Focus</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/390ee993-3b8e-3011-9287-1cde0325dcb7/dow-jones-futures-fall%2C-oil.html?.tsrc=rss" target="_blank">Dow Jones Futures Fall, Oil Prices Above $100 Amid Trump's Iran War Comments</a></li><li class="news-item"><a href="https://www.barchart.com/story/news/1030699/iran-oil-prices-and-other-key-things-to-watch-this-week?.tsrc=rss" target="_blank">Iran, Oil Prices and Other Key Things to Watch this Week</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://www.thestreet.com/crypto/markets/elon-musk-showers-love-on-bitcoin-again-after-a-long-hiatus?.tsrc=rss" target="_blank">Elon Musk showers love on Bitcoin again after a long hiatus</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/30/tesla-grew-sales-in-europe-for-the-first-time-in-a/?.tsrc=rss" target="_blank">Tesla Grew Sales in Europe for the First Time in a Year. Is the Automaker's Stock Set to Soar in 2026?</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/30/nio-rises-5-while-tesla-stalls-the-ev-rivalry-just-got-a-lot-more-interesting/?.tsrc=rss" target="_blank">Nio Rises 5% While Tesla Stalls: The EV Rivalry Just Got a Lot More Interesting</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -819,23 +835,23 @@
                 제약·바이오 <span class="count">(1)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>2.09% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'LLY', 'NYSE:LLY')">
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.12% 상승</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+            <div class="stock-item pos" onclick="toggleStock(event, this, 'LLY', 'NYSE:LLY')">
                 <div class="stock-header">
                     <span class="ticker">LLY</span>
                     <span class="details">
-                        <span class="price">$878.24</span>
-                        <span class="change">-2.09%</span>
-                        <span class="premarket-badge pre-neg">Post -0.37%</span>
+                        <span class="price">$888.11</span>
+                        <span class="change">+1.12%</span>
+                        <span class="premarket-badge pre-pos">Pre +0.99%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-LLY">
                     <div class="summary-content">
                         <p class="bot-analysis">
     <b>Eli Lilly and Company (LLY)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 제약·바이오 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-2.09% 약세 조정</b>를 기록하며 <b>$878.24</b>에 장을 마감했습니다.<br><br>
+    해당 종목은 오늘 글로벌 제약·바이오 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-pos);'>+1.12% 상승 돌파</b>를 기록하며 <b>$888.11</b>에 장을 마감했습니다.<br><br>
     <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 제약·바이오 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 2.09%의 등락률은 현재 해당 종목이 <b>높은 단기 변동성(High Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    펀더멘털의 견고함과 긍정적인 수급 동향에 힙입어 단기 저항선을 강하게 돌파하는 상승 랠리 초입을 시사합니다. 전반적인 제약·바이오 산업의 호황 사이클과 맞물려 추가적인 상방 압력이 유효한 상태입니다. 당일 1.12%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
     </p>
                         <div class="addon-grid">
                             <div class="addon-col">
@@ -844,7 +860,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/m/6c5012a5-88ad-3146-83b4-8d5b27ae0dfe/eli-lilly%2C-insilico-strike-ai.html?.tsrc=rss" target="_blank">Eli Lilly, InSilico Strike AI Drug Discovery Deal</a></li><li class="news-item"><a href="https://finance.yahoo.com/news/eli-lilly-sign-2bn-deal-110011812.html?.tsrc=rss" target="_blank">Eli Lilly signs $2bn deal for AI drug development with Hong Kong biotech</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/prediction-buying-pfizer-stock-today-could-set-you/?.tsrc=rss" target="_blank">Prediction: Buying Pfizer Stock Today Could Set You Up for Life</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/news/eli-lilly-sign-2bn-deal-110011812.html?.tsrc=rss" target="_blank">Eli Lilly signs $2bn deal for AI drug development with Hong Kong biotech</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/healthcare/articles/sector-health-care-stocks-advance-175221436.html?.tsrc=rss" target="_blank">Sector Update: Health Care Stocks Advance Monday Afternoon</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/0dba3715-9c3b-3547-a8cf-eb6dd4b82e75/these-stocks-are-today%E2%80%99s.html?.tsrc=rss" target="_blank">These Stocks Are Today’s Movers: Nvidia, Alcoa, Palo Alto, Boston Scientific, Sysco, CrowdStrike, Micron, and More</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -935,10 +951,10 @@
             element.classList.toggle('expanded');
             
             if (element.classList.contains('expanded')) {
-                const chartId = 'tvchart_' + ticker;
+                const chartId = 'tvchart_' + ticker.replace('.', '_');
                 const chartContainer = document.getElementById(chartId);
                 
-                if (chartContainer && typeof TradingView !== 'undefined' && !chartContainer.hasChildNodes()) {
+                if (chartContainer && typeof TradingView !== 'undefined' && chartContainer.innerHTML.trim() === '') {
                     new TradingView.widget({
                         "autosize": true,
                         "symbol": tvSymbol,
