@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <style>
-        :root { --bg-color: #000000; --surface-color: #0c0c0e; --text-main: #e2e2e2; --text-mute: #757575; --border-color: #222222; --accent-pos: #00e676; --accent-neg: #ff1744; }
+        :root { --bg-color: #050505; --surface-color: rgba(18, 18, 22, 0.65); --text-main: #e2e2e2; --text-mute: #757575; --border-color: #222222; --accent-pos: #00e676; --accent-neg: #ff1744; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-main); padding: 40px max(4vw, 20px); line-height: 1.6; -webkit-font-smoothing: antialiased; }
         .container { max-width: 960px; margin: 0 auto; }
@@ -45,35 +45,48 @@
         .sector-briefing p { font-size: 0.9rem; color: #999; line-height: 1.6; font-weight: 400; }
         .sector-briefing b { color: #ccc; font-weight: 600; }
         
-        .stock-item { padding: 20px 24px; border-bottom: 1px solid var(--border-color); cursor: pointer; }
-        .stock-item:hover { background: rgba(255,255,255,0.02); }
-        .stock-header { display: flex; justify-content: space-between; align-items: center; }
-        .ticker { font-weight: 700; color: #fff; font-size: 1.15rem; width: 90px; }
-        .details { display: flex; align-items: center; gap: 24px; }
-        .price { font-size: 1.05rem; color: var(--text-main); font-weight: 500; }
-        .change { font-weight: 600; font-size: 1.05rem; text-align: right; width: 80px; letter-spacing: 0.5px; }
-        .pos .change { color: var(--accent-pos); }
-        .neg .change { color: var(--accent-neg); }
-        .neu .change { color: var(--text-mute); }
-        
-        .stock-summary { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
-        .expanded .stock-summary { max-height: 1200px; }
-        .summary-content { margin-top: 24px; border-top: 1px dashed var(--border-color); padding-top: 24px; }
-        .bot-analysis { margin-bottom: 24px; font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: #b2b5be; padding-left: 16px; border-left: 2px solid #555; word-break: keep-all; }
-        
         .addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         @media (max-width: 768px) { .addon-grid { grid-template-columns: 1fr; } }
         .box-title { font-size: 0.85rem; font-weight: 600; color: #888; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
         .mini-chart { height: 280px; width: 100%; border: 1px solid var(--border-color); background-color: var(--bg-color); }
         .news-container { height: 280px; padding: 16px; border: 1px solid var(--border-color); background: var(--surface-color); overflow-y: auto; }
+
+        .glass-panel { background: rgba(18, 18, 22, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); transition: all 0.3s ease; }
+        .glass-panel:hover { box-shadow: 0 12px 48px 0 rgba(0, 230, 118, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); }
+        .widget-box, .summary-section, .sector-group, .global-news-container { background: rgba(18, 18, 22, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); overflow: hidden; }
+        .premarket-badge { font-size: 0.8rem; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.1); font-weight: 500; margin-left: 8px; vertical-align: middle; }
+        .pre-pos { color: var(--accent-pos); border: 1px solid rgba(0, 230, 118, 0.2); }
+        .pre-neg { color: var(--accent-neg); border: 1px solid rgba(255, 23, 68, 0.2); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        body { background: radial-gradient(circle at 10% 20%, rgba(0, 230, 118, 0.1), transparent 45%), radial-gradient(circle at 90% 80%, rgba(255, 23, 68, 0.1), transparent 45%), var(--bg-color); background-attachment: fixed; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>US Market Intelligence</h1>
-            <div class="date">2026-03-30 03:14 KST Update</div>
+            <div class="date">2026-03-30 03:24 KST Update</div>
         </header>
+
+        <!-- Ticker Tape -->
+        <div class="tradingview-widget-container" style="margin-bottom: 40px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+          {
+          "symbols": [
+            { "proName": "OANDA:US10Y", "title": "US 10Y Yield" },
+            { "proName": "TVC:DXY", "title": "Dollar Index" },
+            { "proName": "OANDA:XAUUSD", "title": "Gold" },
+            { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
+            { "description": "S&P 500", "proName": "SP:SPX" },
+            { "description": "Nasdaq 100", "proName": "NASDAQ:NDX" }
+          ],
+          "showSymbolLogo": true, "isTransparent": true, "displayMode": "regular", "colorTheme": "dark", "locale": "en"
+        }
+          </script>
+        </div>
+
 
         <h2 class="section-header">거시 경제 전략 및 인사이트</h2>
         <p class="section-desc">현재 미국 뉴욕 증시의 매크로 흐름과 지정학적 최신 이슈 브리핑입니다.</p>
@@ -87,7 +100,19 @@
     반면 <b>Meta Platforms, Inc.(META)</b>는 공매도 공격 또는 실망 매물 출회로 <b>-3.99%</b> 급락하며 중장기 투심을 저해하는 리스크 요인으로 부상했습니다.</p>
     </div>
     
-            <div class="widget-box">
+            
+    <div class="sentiment-widget widget-box reveal" style="padding: 24px; margin-top: 24px;">
+        <h3 style="font-size: 0.95rem; color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">AI News Sentiment Tracker</h3>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; color: #aaa;">
+            <span>Extreme Fear</span><span>Neutral</span><span>Extreme Greed</span>
+        </div>
+        <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative;">
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 74%; background: var(--accent-pos); transition: width 1s ease; box-shadow: 0 0 10px var(--accent-pos);"></div>
+        </div>
+        <div style="margin-top: 12px; font-size: 1.1rem; font-weight: 700; color: var(--accent-pos); text-align: center;">Greed (74/100)</div>
+    </div>
+    
+            <div class="widget-box reveal">
                 <h2 style="padding: 16px 20px; font-size: 1.05rem; font-weight: 600; color: #fff; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border-color); margin: 0; text-transform: uppercase;">시장 투자 심리 (공포/탐욕) 지수</h2>
                 <div class="tradingview-widget-container" style="height: 450px; padding: 10px; overflow-x: auto; overflow-y: hidden;">
                   <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
@@ -99,17 +124,17 @@
             
         </div>
         
-        <div class="global-news-container widget-box">
+        <div class="global-news-container widget-box reveal">
             <h2 style="padding: 16px 20px; font-size: 1.05rem; font-weight: 600; color: #fff; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border-color); margin: 0; text-transform: uppercase;">글로벌 핵심 경제 뉴스 (Yahoo Finance)</h2>
             <div style="padding: 16px 20px;">
-                <ul class="news-list"><li class="news-item"><a href="https://247wallst.com/investing/2026/03/29/why-conservative-investors-are-turning-to-aok-with-vix-at-the-93rd-percentile/?.tsrc=rss" target="_blank">Why Conservative Investors Are Turning to AOK With VIX at the 93rd Percentile</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/29/aor-has-returned-113-6-over-10-years-with-built-in-rebalancing-and-a-2-6-yield/?.tsrc=rss" target="_blank">AOR Has Returned 113.6% Over 10 Years With Built-In Rebalancing and a 2.6% Yield</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/28/spy-has-returned-217-over-10-years-but-its-top-3-holdings-now-control-the-outcome/?.tsrc=rss" target="_blank">SPY Has Returned 217% Over 10 Years, But Its Top 3 Holdings Now Control the Outcome</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/28/rspas-8-9-yield-hides-a-tax-problem-most-income-investors-never-see-coming/?.tsrc=rss" target="_blank">RSPA’s 8.9% Yield Hides a Tax Problem Most Income Investors Never See Coming</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/oef-returned-314-83-over-10-years-while-spy-managed-223-37/?.tsrc=rss" target="_blank">OEF Returned 314.83% Over 10 Years While SPY Managed 223.37%</a></li></ul>
+                <ul class="news-list"><li class="news-item"><a href="https://247wallst.com/investing/2026/03/29/why-conservative-investors-are-turning-to-aok-with-vix-at-the-93rd-percentile/?.tsrc=rss" target="_blank">Why Conservative Investors Are Turning to AOK With VIX at the 93rd Percentile</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/29/aor-has-returned-113-6-over-10-years-with-built-in-rebalancing-and-a-2-6-yield/?.tsrc=rss" target="_blank">AOR Has Returned 113.6% Over 10 Years With Built-In Rebalancing and a 2.6% Yield</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/28/spy-has-returned-217-over-10-years-but-its-top-3-holdings-now-control-the-outcome/?.tsrc=rss" target="_blank">SPY Has Returned 217% Over 10 Years, But Its Top 3 Holdings Now Control the Outcome</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/28/rspas-8-9-yield-hides-a-tax-problem-most-income-investors-never-see-coming/?.tsrc=rss" target="_blank">RSPA’s 8.9% Yield Hides a Tax Problem Most Income Investors Never See Coming</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/oef-returned-314-83-over-10-years-while-spy-managed-223-37/?.tsrc=rss" target="_blank">OEF Returned 314.83% Over 10 Years While SPY Managed 223.37%</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/pre-markets-down-again-ahead-143300300.html?.tsrc=rss" target="_blank">Pre-Markets Down Again Ahead of Weekend</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/market-minute-3-27-26-141500250.html?.tsrc=rss" target="_blank">Market Minute 3-27-26- Deadline Can Kick Earns Market Shrug</a></li><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131702047.html?.tsrc=rss" target="_blank">Exchange-Traded Funds, Equity Futures Lower Pre-Bell Friday as Investor Concerns Linger Amid Middle East Conflict</a></li><li class="news-item"><a href="https://247wallst.com/investing/2026/03/27/3-etfs-that-are-beating-the-market-right-now-and-none-of-them-are-the-ones-everyone-already-owns/?.tsrc=rss" target="_blank">3 ETFs That Are Beating the Market Right Now — and None of Them Are the Ones Everyone Already Owns</a></li><li class="news-item"><a href="https://finance.yahoo.com/m/db34d9fc-5a53-31de-b8d3-e9ddd77856da/think-trump%27s-war-crash-isn%27t.html?.tsrc=rss" target="_blank">Think Trump's War Crash Isn't Bad Yet? 5 Big Stocks Implode 60%</a></li></ul>
             </div>
         </div>
         <div class="safe-scroll-zone"></div>
         
         <h2 class="section-header">글로벌 3대 지수 흐름</h2>
         <p class="section-desc">S&P 500, Nasdaq 100, Dow Jones 산업평균지수의 실시간 진성(Genuine) 지수 흐름 추적입니다.</p>
-        <div class="widget-box" style="height: 480px; display: flex; flex-direction: column;">
+        <div class="widget-box reveal" style="height: 480px; display: flex; flex-direction: column;">
             <div class="index-tabs" style="display: flex; justify-content: space-between; align-items: center; background: #000; border-bottom: 1px solid var(--border-color);">
                 <div style="display: flex;">
                     <div class="index-tab active" onclick="changeSymbol('AMEX:SPY', this)" style="padding: 16px 24px; cursor: pointer; color: #fff; font-weight: 600; font-size: 0.95rem; border-right: 1px solid var(--border-color); border-bottom: 2px solid var(--accent-pos);">S&P 500</div>
@@ -129,7 +154,7 @@
 
         <h2 class="section-header">S&P 500 자본 히트맵 (Heatmap) Analysis</h2>
         <p class="section-desc">글로벌 섹터별 자금 유입 현황 및 시장 지배력 상대적 모멘텀 시각화 데이터입니다.</p>
-        <div class="widget-box" style="height: 320px;">
+        <div class="widget-box reveal" style="height: 320px;">
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
               <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
@@ -141,7 +166,7 @@
 
         <h2 class="section-header">글로벌 금융 캘린더 (Earnings & Macro)</h2>
         <p class="section-desc">단기 변동성 확대를 야기할 수 있는 거시 지표 일정 및 핵심 대형주의 분기 실적 캘린더입니다.</p>
-        <div class="widget-box" style="height: 350px;">
+        <div class="widget-box reveal" style="height: 350px;">
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
               <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
@@ -155,18 +180,19 @@
         <p class="section-desc">월스트리트 최신 자본 시가총액 리더십 편입 종목들에 대한 섹터별 고도화 분석입니다.</p>
         <div class="sectors-container">
             
-        <div class="sector-group">
+        <div class="sector-group reveal">
             <div class="sector-header" onclick="toggleSector(this)">
                 금융 <span class="count">(8)</span>
             </div>
             <div class="sector-content" style="display: none;">
-                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.13% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
+                <div class="sector-briefing"><p>해당 섹터 추적 종목들은 오늘 평균 <b>1.12% 하락</b>하며 시장 베타(Beta) 수익률과 철저히 차별화되는 고유의 캡티브 파워(Captive Power)를 증명했습니다.</p></div>
             <div class="stock-item neg" onclick="toggleStock(event, this, 'BRK.B', 'NYSE:BRK.B')">
                 <div class="stock-header">
                     <span class="ticker">BRK.B</span>
                     <span class="details">
                         <span class="price">$468.49</span>
                         <span class="change">-1.43%</span>
+                        <span class="premarket-badge pre-pos">Post +0.02%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-BRK.B">
@@ -197,6 +223,7 @@
                     <span class="details">
                         <span class="price">$703,699.99</span>
                         <span class="change">-1.24%</span>
+                        
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-BRK.A">
@@ -221,102 +248,13 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PD', 'NYSE:JPM/PD')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PD</span>
-                    <span class="details">
-                        <span class="price">$24.32</span>
-                        <span class="change">-0.53%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PD">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.53% 약세 조정</b>를 기록하며 <b>$24.32</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.53%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PD" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PC</span>
-                    <span class="details">
-                        <span class="price">$24.86</span>
-                        <span class="change">-0.28%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PC">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.28% 약세 조정</b>를 기록하며 <b>$24.86</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.28%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PM', 'NYSE:JPM/PM')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PM</span>
-                    <span class="details">
-                        <span class="price">$17.51</span>
-                        <span class="change">-0.85%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PM">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.85% 약세 조정</b>를 기록하며 <b>$17.51</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.85%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PM" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM', 'NYSE:JPM')">
                 <div class="stock-header">
                     <span class="ticker">JPM</span>
                     <span class="details">
                         <span class="price">$282.84</span>
                         <span class="change">-3.02%</span>
+                        <span class="premarket-badge pre-neg">Post -0.08%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-JPM">
@@ -341,12 +279,137 @@
                 </div>
             </div>
             
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PC', 'NYSE:JPM/PC')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PC</span>
+                    <span class="details">
+                        <span class="price">$24.86</span>
+                        <span class="change">-0.28%</span>
+                        <span class="premarket-badge pre-neg">Pre -0.32%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PC">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE (JPM/PC)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.28% 약세 조정</b>를 기록하며 <b>$24.86</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.28%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PC" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PJ', 'NYSE:JPM/PJ')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PJ</span>
+                    <span class="details">
+                        <span class="price">$19.58</span>
+                        <span class="change">-0.61%</span>
+                        
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PJ">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of JPMorgan Chase & Co. 4.75% Non-Cumulative Preferred Stock, Series GG (JPM/PJ)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.61% 약세 조정</b>를 기록하며 <b>$19.58</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.61%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PJ" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PM', 'NYSE:JPM/PM')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PM</span>
+                    <span class="details">
+                        <span class="price">$17.51</span>
+                        <span class="change">-0.85%</span>
+                        <span class="premarket-badge pre-pos">Post +1.64%</span>
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PM">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM (JPM/PM)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.85% 약세 조정</b>를 기록하며 <b>$17.51</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.85%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PM" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PD', 'NYSE:JPM/PD')">
+                <div class="stock-header">
+                    <span class="ticker">JPM/PD</span>
+                    <span class="details">
+                        <span class="price">$24.32</span>
+                        <span class="change">-0.53%</span>
+                        
+                    </span>
+                </div>
+                <div class="stock-summary" id="summary-JPM/PD">
+                    <div class="summary-content">
+                        <p class="bot-analysis">
+    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD (JPM/PD)</b> 개장 요약:<br>
+    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.53% 약세 조정</b>를 기록하며 <b>$24.32</b>에 장을 마감했습니다.<br><br>
+    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
+    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.53%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
+    </p>
+                        <div class="addon-grid">
+                            <div class="addon-col">
+                                <h3 class="box-title">기술적 분석 차트</h3>
+                                <div id="tvchart_JPM/PD" class="mini-chart"></div>
+                            </div>
+                            <div class="addon-col">
+                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
+                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PL', 'NYSE:JPM/PL')">
                 <div class="stock-header">
                     <span class="ticker">JPM/PL</span>
                     <span class="details">
                         <span class="price">$19.03</span>
                         <span class="change">-0.99%</span>
+                        
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-JPM/PL">
@@ -371,40 +434,10 @@
                 </div>
             </div>
             
-            <div class="stock-item neg" onclick="toggleStock(event, this, 'JPM/PK', 'NYSE:JPM/PK')">
-                <div class="stock-header">
-                    <span class="ticker">JPM/PK</span>
-                    <span class="details">
-                        <span class="price">$18.72</span>
-                        <span class="change">-0.69%</span>
-                    </span>
-                </div>
-                <div class="stock-summary" id="summary-JPM/PK">
-                    <div class="summary-content">
-                        <p class="bot-analysis">
-    <b>J P Morgan Chase & Co Depositary Shares, each representing a 1/400th interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ (JPM/PK)</b> 개장 요약:<br>
-    해당 종목은 오늘 글로벌 금융 산업 사이클을 관통하는 자본 흐름 모델에서 전일 대비 <b style='color: var(--accent-neg);'>-0.69% 약세 조정</b>를 기록하며 <b>$18.72</b>에 장을 마감했습니다.<br><br>
-    <b style="color:#fff;">[알고리즘 딥다이브 분석]</b><br>
-    차익 실현 매물이 두껍게 형성되며 단기 기술적 지지선을 테스트하는 조정 구간에 진입했습니다. 구조적 리스크보다는 금융 섹터 내부의 정상적인 자본 순환(Rotation) 이탈 과정으로 해석됩니다. 당일 0.69%의 등락률은 현재 해당 종목이 <b>완만하고 안정적인 횡보(Low Volatility)</b> 장세의 한가운데 있음을 증명합니다. 최정위 시가총액을 자랑하는 우량 앵커(Anchor) 종목으로서, 향후 2~3거래일 내에 유의미한 추세 변곡점(Pivot Point)을 생성할 확률이 농후합니다.
-    </p>
-                        <div class="addon-grid">
-                            <div class="addon-col">
-                                <h3 class="box-title">기술적 분석 차트</h3>
-                                <div id="tvchart_JPM/PK" class="mini-chart"></div>
-                            </div>
-                            <div class="addon-col">
-                                <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><p class='empty-news'>해당 종목의 최신 기사가 없습니다.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             </div>
         </div>
         
-        <div class="sector-group">
+        <div class="sector-group reveal">
             <div class="sector-header" onclick="toggleSector(this)">
                 전자·반도체 <span class="count">(4)</span>
             </div>
@@ -416,6 +449,7 @@
                     <span class="details">
                         <span class="price">$167.52</span>
                         <span class="change">-2.17%</span>
+                        <span class="premarket-badge pre-neg">Post -0.55%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-NVDA">
@@ -446,6 +480,7 @@
                     <span class="details">
                         <span class="price">$248.80</span>
                         <span class="change">-1.62%</span>
+                        <span class="premarket-badge pre-neg">Post -0.62%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-AAPL">
@@ -476,6 +511,7 @@
                     <span class="details">
                         <span class="price">$326.74</span>
                         <span class="change">+0.19%</span>
+                        <span class="premarket-badge pre-neg">Post -0.66%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-TSM">
@@ -506,6 +542,7 @@
                     <span class="details">
                         <span class="price">$300.68</span>
                         <span class="change">-2.82%</span>
+                        <span class="premarket-badge pre-neg">Post -0.79%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-AVGO">
@@ -533,7 +570,7 @@
             </div>
         </div>
         
-        <div class="sector-group">
+        <div class="sector-group reveal">
             <div class="sector-header" onclick="toggleSector(this)">
                 IT·소프트웨어 <span class="count">(4)</span>
             </div>
@@ -545,6 +582,7 @@
                     <span class="details">
                         <span class="price">$274.34</span>
                         <span class="change">-2.34%</span>
+                        <span class="premarket-badge pre-neg">Post -0.63%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-GOOGL">
@@ -575,6 +613,7 @@
                     <span class="details">
                         <span class="price">$273.76</span>
                         <span class="change">-2.49%</span>
+                        <span class="premarket-badge pre-neg">Post -0.55%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-GOOG">
@@ -605,6 +644,7 @@
                     <span class="details">
                         <span class="price">$356.77</span>
                         <span class="change">-2.51%</span>
+                        <span class="premarket-badge pre-neg">Post -0.17%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-MSFT">
@@ -635,6 +675,7 @@
                     <span class="details">
                         <span class="price">$525.72</span>
                         <span class="change">-3.99%</span>
+                        <span class="premarket-badge pre-neg">Post -1.07%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-META">
@@ -662,7 +703,7 @@
             </div>
         </div>
         
-        <div class="sector-group">
+        <div class="sector-group reveal">
             <div class="sector-header" onclick="toggleSector(this)">
                 소매·유통 <span class="count">(2)</span>
             </div>
@@ -674,6 +715,7 @@
                     <span class="details">
                         <span class="price">$199.34</span>
                         <span class="change">-3.95%</span>
+                        <span class="premarket-badge pre-neg">Post -0.46%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-AMZN">
@@ -691,7 +733,7 @@
                             </div>
                             <div class="addon-col">
                                 <h3 class="box-title">해외 최신 속보 (Yahoo Finance)</h3>
-                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/sectors/energy/articles/tgs-announces-aws-preferred-cloud-050000020.html?.tsrc=rss" target="_blank">TGS Announces AWS as its Preferred Cloud Provider</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/amazon-zoox-building-momentum-but-not-business/?.tsrc=rss" target="_blank">Amazon's Zoox Is Building Momentum -- but Not a Business (Yet)</a></li><li class="news-item"><a href="https://www.moneydigest.com/2133650/popular-streaming-platform-you-didnt-know-part-of-amazons-portfolio/?.tsrc=rss" target="_blank">The Popular Streaming Platform You Didn't Know Was Part Of Amazon's Portfolio</a></li></ul></div>
+                                <div class="news-container"><ul class="news-list"><li class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/amazon-court-win-puts-focus-070527782.html?.tsrc=rss" target="_blank">Amazon Court Win Puts Focus On Control Of AI Shopping Traffic</a></li><li class="news-item"><a href="https://finance.yahoo.com/sectors/energy/articles/tgs-announces-aws-preferred-cloud-050000020.html?.tsrc=rss" target="_blank">TGS Announces AWS as its Preferred Cloud Provider</a></li><li class="news-item"><a href="https://www.fool.com/investing/2026/03/29/amazon-zoox-building-momentum-but-not-business/?.tsrc=rss" target="_blank">Amazon's Zoox Is Building Momentum -- but Not a Business (Yet)</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -704,6 +746,7 @@
                     <span class="details">
                         <span class="price">$122.89</span>
                         <span class="change">+0.58%</span>
+                        <span class="premarket-badge pre-neg">Post -0.23%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-WMT">
@@ -731,7 +774,7 @@
             </div>
         </div>
         
-        <div class="sector-group">
+        <div class="sector-group reveal">
             <div class="sector-header" onclick="toggleSector(this)">
                 소비재(내구재) <span class="count">(1)</span>
             </div>
@@ -743,6 +786,7 @@
                     <span class="details">
                         <span class="price">$361.83</span>
                         <span class="change">-2.76%</span>
+                        <span class="premarket-badge pre-neg">Post -0.37%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-TSLA">
@@ -770,7 +814,7 @@
             </div>
         </div>
         
-        <div class="sector-group">
+        <div class="sector-group reveal">
             <div class="sector-header" onclick="toggleSector(this)">
                 제약·바이오 <span class="count">(1)</span>
             </div>
@@ -782,6 +826,7 @@
                     <span class="details">
                         <span class="price">$878.24</span>
                         <span class="change">-2.09%</span>
+                        <span class="premarket-badge pre-neg">Post -0.37%</span>
                     </span>
                 </div>
                 <div class="stock-summary" id="summary-LLY">
@@ -869,6 +914,14 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             renderMainChart();
         });
 
