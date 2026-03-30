@@ -1,0 +1,27 @@
+name: Automated Dashboard Update
+
+on:
+  schedule:
+    - cron: '0 * * * *' # 매 정각마다(1시간 단위) 자동 실행
+  workflow_dispatch: # 수동으로도 강제 실행할 수 있게 액션 탭 노출
+
+jobs:
+  run-updater:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 저장소에 새 버전(HTML)을 덮어쓸 권한 부여
+
+    steps:
+      - name: 레포지토리 코드 복사 (Checkout)
+        uses: actions/checkout@v4
+
+      - name: 파이썬 환경 구축 (Setup Python)
+        uses: actions/setup-python@v5
+        with:
+          python-version: 'latest'
+
+      - name: 깃(Git) 봇 연동 및 업데이트 스크립트 실행
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          python3 update_dashboard.py
